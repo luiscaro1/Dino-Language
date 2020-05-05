@@ -28,7 +28,6 @@ def p_binary_operators(p):
                   | term DIVIDED factor"""
 
     if p[2] == "plus":
-        print(eval(p[1]) + eval(p[3]))
         p[0] = p[1] + p[3]
     elif p[2] == "minus":
         print(eval(p[1] - p[3]))

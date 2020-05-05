@@ -6,29 +6,28 @@ import dlex
 #
 # if len(sys.argv) == 2:
 #     with open(sys.argv[1]) as f:
-#         data = f.read()
+#         data = "1 plus 1"
 #     prog = dparse.parse(data)
 #     if not prog:
 #         raise SystemExit
 
+prog = dparse.parse("1 plus 3")
+print(prog)
 
-
-
-
-while True:
-    try:
-        line = input("[Dino] ")
-        if line == "<end>":
-            break
-    except EOFError:
-        raise SystemExit
-    if not line:
-        continue
-    line += "\n"
-    prog = dparse.parse(line)
-    if not prog:
-        continue
-
+#
+# while True:
+#     try:
+#         line = input("[Dino] ")
+#         if line == "<end>":
+#             break
+#     except EOFError:
+#         raise SystemExit
+#     if not line:
+#         continue
+#     line += "\n"
+#     prog = dparse.parse(line)
+#     if not prog:
+#         continue
 
     # keys = list(prog)
     # if keys[0] > 0:
