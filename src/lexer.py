@@ -1,13 +1,49 @@
 import ply.lex as lex
 
+reserved = {
+    "is": "IS",
+    "a": "A",
+    "an": "AN",
+    "are": "ARE",
+    "plus": "PLUS",
+    "minus": "MINUS",
+    "times": "TIMES",
+    "divided": "DIVIDED",
+    "by": "BY",
+    "true": "TRUE",
+    "false": "FALSE",
+}
+tokens = ["PERIOD", "QUEST", "ID", "DIGIT", "EOF"] + list(reserved.values())
 
-tokens = {"DIGIT", "PLUS", "CHARACTER", "PERIOD", "BOOL", "MULT", "SUB", "DIV"}
 
-
-t_PLUS = r"plus"
-t_MINUS = r"minus"
-t_CHARACTER = r"[a-zA-z]"
-t_TIMES = r"times"
-t_DIVIDE = r"divided"
 t_PERIOD = r"\."
-t_BOOL = r"true|false"
+t_QUEST = r"\?"
+t_ignore = " \t"
+
+
+def t_DIGIT(t):
+    r"\d+"
+    t.value = int(t.value)
+    return t
+
+
+def t_ID(t):
+    r"[a-zA-z][a-zA-Z0-9]*"
+    t.type = reserved.get(t.value, "ID")
+    return t
+
+
+def t_error(t):
+    print("Illegal character '%s'" % t.value[0])
+    t.lexer.skip(1)
+
+
+data = "is an a are times divided by true false"
+
+lexer = lex.lex()
+lexer.input(data)
+while True:
+    tok = lexer.token()
+    if not tok:
+        break
+    print(tok)
