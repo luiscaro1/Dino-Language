@@ -7,6 +7,7 @@ Operators: times|plus|minus
 TYPE: object|integer|decimal|character
 
 Grammar:
+PROGRAM : PROGRAM Statement
 Int::= Digit+
 BOOL::= True | False
 SUM::= DIGIT{plus DIGIT}+
