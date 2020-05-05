@@ -2,21 +2,23 @@ TOKENS:
 Characters: a-z|A-Z
 DIGIT: 0-9
 PERIOD: .
-QMARK: ?
-Operators: times|plus|minus
-TYPE: object|integer|decimal|character
+Operators: times|plus|minus|divided by
 
 Grammar:
-PROGRAM : PROGRAM Statement
-Int::= Digit+
+PROGRAM : PROGRAM SENTENCE | SENTENCE
+SENTENCE::= EXPRESSION | DEFINITION | QUESTION
+EXPRESSION : EXPRESSION plus TERM | EXPRESSION minus TERM | TERM
+TERM : TERM times FACTOR | TERM divided by FACTOR | FACTOR
+DEFINITION::= IDENTIFIER is a TYPE | IDENTIFIER is an TYPE| IDENTIFIER are TYPE{,TYPE}+           <--- #verificar
+QUESTION::= is TYPE BOOL ? | is TYPE a TYPE ? | are TYPE BOOL ?| are TYPE a TYPE ? | what is TYPE ?
+TYPE : IDENTIFIER | DATATYPE
+DATATYPE : NUMBER | BOOL | LIST
+LIST : TYPE | TYPE , LIST
+FACTOR : NUMBER
+NUMBER::= Digit+
 BOOL::= True | False
-SUM::= DIGIT{plus DIGIT}+
-SUBTRACTION::= DIGIT{minus DIGIT}+
-MULTIPLICATION::= DIGIT{times DIGIT}+
-DIVITION:: DIGIT{divide by DIGIT}+
-IDENTIFIER::= Characters{Characters|Digit}+
-DEFINITION::= IDENTIFIER is a TYPE | IDENTIFIER is an TYPE| Type are Type{,Type}+
-SENTENCE::= DEFINITION DELIMETER | QUESTION DELIMETER
-QUESTION::= Is TYPE BOOL QMARK | Is TYPE a TYPE QMARK | Are TYPE BOOL QMARK| Are TYPE a TYPE?
+IDENTIFIER::= Characters{Characters|Digit}*
 
-ESTO ESTA BIEN MAL ESCRITO
+
+
+ESTO ESTA BIEN ESCRITO

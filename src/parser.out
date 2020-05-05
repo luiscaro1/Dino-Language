@@ -5,7 +5,6 @@ Unused terminals:
     A
     AN
     ARE
-    BY
     FALSE
     ID
     IS
@@ -20,7 +19,7 @@ Rule 0     S' -> expression
 Rule 1     expression -> expression PLUS term
 Rule 2     expression -> expression MINUS term
 Rule 3     term -> term TIMES factor
-Rule 4     term -> term DIVIDED factor
+Rule 4     term -> term DIVIDED BY factor
 Rule 5     expression -> term
 Rule 6     term -> factor
 Rule 7     factor -> number
@@ -31,7 +30,7 @@ Terminals, with rules where they appear
 A                    : 
 AN                   : 
 ARE                  : 
-BY                   : 
+BY                   : 4
 DIVIDED              : 4
 FALSE                : 
 ID                   : 
@@ -62,7 +61,7 @@ state 0
     (2) expression -> . expression MINUS term
     (5) expression -> . term
     (3) term -> . term TIMES factor
-    (4) term -> . term DIVIDED factor
+    (4) term -> . term DIVIDED BY factor
     (6) term -> . factor
     (7) factor -> . number
     (8) number -> . NUMBER
@@ -88,7 +87,7 @@ state 2
 
     (5) expression -> term .
     (3) term -> term . TIMES factor
-    (4) term -> term . DIVIDED factor
+    (4) term -> term . DIVIDED BY factor
 
     PLUS            reduce using rule 5 (expression -> term .)
     MINUS           reduce using rule 5 (expression -> term .)
@@ -134,7 +133,7 @@ state 6
 
     (1) expression -> expression PLUS . term
     (3) term -> . term TIMES factor
-    (4) term -> . term DIVIDED factor
+    (4) term -> . term DIVIDED BY factor
     (6) term -> . factor
     (7) factor -> . number
     (8) number -> . NUMBER
@@ -149,7 +148,7 @@ state 7
 
     (2) expression -> expression MINUS . term
     (3) term -> . term TIMES factor
-    (4) term -> . term DIVIDED factor
+    (4) term -> . term DIVIDED BY factor
     (6) term -> . factor
     (7) factor -> . number
     (8) number -> . NUMBER
@@ -173,20 +172,16 @@ state 8
 
 state 9
 
-    (4) term -> term DIVIDED . factor
-    (7) factor -> . number
-    (8) number -> . NUMBER
+    (4) term -> term DIVIDED . BY factor
 
-    NUMBER          shift and go to state 5
+    BY              shift and go to state 13
 
-    factor                         shift and go to state 13
-    number                         shift and go to state 4
 
 state 10
 
     (1) expression -> expression PLUS term .
     (3) term -> term . TIMES factor
-    (4) term -> term . DIVIDED factor
+    (4) term -> term . DIVIDED BY factor
 
     PLUS            reduce using rule 1 (expression -> expression PLUS term .)
     MINUS           reduce using rule 1 (expression -> expression PLUS term .)
@@ -199,7 +194,7 @@ state 11
 
     (2) expression -> expression MINUS term .
     (3) term -> term . TIMES factor
-    (4) term -> term . DIVIDED factor
+    (4) term -> term . DIVIDED BY factor
 
     PLUS            reduce using rule 2 (expression -> expression MINUS term .)
     MINUS           reduce using rule 2 (expression -> expression MINUS term .)
@@ -221,11 +216,22 @@ state 12
 
 state 13
 
-    (4) term -> term DIVIDED factor .
+    (4) term -> term DIVIDED BY . factor
+    (7) factor -> . number
+    (8) number -> . NUMBER
 
-    TIMES           reduce using rule 4 (term -> term DIVIDED factor .)
-    DIVIDED         reduce using rule 4 (term -> term DIVIDED factor .)
-    PLUS            reduce using rule 4 (term -> term DIVIDED factor .)
-    MINUS           reduce using rule 4 (term -> term DIVIDED factor .)
-    $end            reduce using rule 4 (term -> term DIVIDED factor .)
+    NUMBER          shift and go to state 5
+
+    factor                         shift and go to state 14
+    number                         shift and go to state 4
+
+state 14
+
+    (4) term -> term DIVIDED BY factor .
+
+    TIMES           reduce using rule 4 (term -> term DIVIDED BY factor .)
+    DIVIDED         reduce using rule 4 (term -> term DIVIDED BY factor .)
+    PLUS            reduce using rule 4 (term -> term DIVIDED BY factor .)
+    MINUS           reduce using rule 4 (term -> term DIVIDED BY factor .)
+    $end            reduce using rule 4 (term -> term DIVIDED BY factor .)
 

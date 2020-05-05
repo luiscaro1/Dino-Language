@@ -25,20 +25,19 @@ def p_binary_operators(p):
     """expression : expression PLUS term
                   | expression MINUS term
         term      : term TIMES factor
-                  | term DIVIDED factor"""
+                  | term DIVIDED BY factor"""
 
     if p[2] == "plus":
         p[0] = p[1] + p[3]
     elif p[2] == "minus":
-        print(eval(p[1] - p[3]))
         p[0] = p[1] - p[3]
     elif p[2] == "times":
-        print(eval(p[1] * p[3]))
         p[0] = p[1] * p[3]
     elif p[2] == "divided" and p[3] == "by":
-        print(eval(p[1] / p[3]))
-        p[0] = p[1] / p[4]
-
+        if p[4] != 0:
+            p[0] = int(p[1] / p[4])
+        else:
+            print("ZeroDivisionError: division by zero")
 
 
 def p_expression(p):
@@ -52,18 +51,15 @@ def p_term(p):
 
 def p_factor(p):
     """factor : number"""
-    print(p)
-    print(p[0])
-    print(p[1])
     p[0] = p[1]
-
-
 
 def p_number(p):
     '''number  : NUMBER'''
-    print(p[1])
     p[0] = eval(p[1])
 
+def p_id(p):
+    '''id : ID'''
+    p[0] = p[1]
 def p_error(p):
     if not p:
         print("SYNTAX ERROR AT EOF")
