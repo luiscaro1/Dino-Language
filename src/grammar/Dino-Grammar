@@ -1,0 +1,22 @@
+TOKENS:
+Characters: a-z|A-Z
+DIGIT: 0-9
+PERIOD: .
+QMARK: ?
+Operators: times|plus|minus
+TYPE: object|integer|decimal|character
+
+Grammar:
+PROGRAM : PROGRAM Statement
+Int::= Digit+
+BOOL::= True | False
+SUM::= DIGIT{plus DIGIT}+
+SUBTRACTION::= DIGIT{minus DIGIT}+
+MULTIPLICATION::= DIGIT{times DIGIT}+
+DIVITION:: DIGIT{divide by DIGIT}+
+IDENTIFIER::= Characters{Characters|Digit}+
+DEFINITION::= IDENTIFIER is a TYPE | IDENTIFIER is an TYPE| Type are Type{,Type}+
+SENTENCE::= DEFINITION DELIMETER | QUESTION DELIMETER
+QUESTION::= Is TYPE BOOL QMARK | Is TYPE a TYPE QMARK | Are TYPE BOOL QMARK| Are TYPE a TYPE?
+
+ESTO ESTA BIEN MAL ESCRITO

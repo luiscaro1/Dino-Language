@@ -1,5 +1,6 @@
 from ply import *
 import dlex
+import sys
 
 tokens = dlex.tokens
 
@@ -20,31 +21,25 @@ tokens = dlex.tokens
 #             line, stat = p[2]
 #             p[0][line] = stat
 
-
-def p_factor(p):
-    """factor : DIGIT"""
-    p[0] = p[1]
-
-
-def p_factor_exp(p):
-    """factor : expression"""
-    p[0] = p[1]
-
-
 def p_binary_operators(p):
     """expression : expression PLUS term
                   | expression MINUS term
         term      : term TIMES factor
                   | term DIVIDED factor"""
 
-    if p[2] == "times":
-        p[0] = p[1] * p[3]
-    elif p[2] == "divided" and p[3] == "by":
-        p[0] = p[1] / p[4]
-    elif p[2] == "plus":
+    if p[2] == "plus":
+        print(eval(p[1]) + eval(p[3]))
         p[0] = p[1] + p[3]
     elif p[2] == "minus":
+        print(eval(p[1] - p[3]))
         p[0] = p[1] - p[3]
+    elif p[2] == "times":
+        print(eval(p[1] * p[3]))
+        p[0] = p[1] * p[3]
+    elif p[2] == "divided" and p[3] == "by":
+        print(eval(p[1] / p[3]))
+        p[0] = p[1] / p[4]
+
 
 
 def p_expression(p):
@@ -56,6 +51,19 @@ def p_term(p):
     """term : factor"""
     p[0] = p[1]
 
+def p_factor(p):
+    """factor : number"""
+    print(p)
+    print(p[0])
+    print(p[1])
+    p[0] = p[1]
+
+
+
+def p_number(p):
+    '''number  : NUMBER'''
+    print(p[1])
+    p[0] = eval(p[1])
 
 def p_error(p):
     if not p:

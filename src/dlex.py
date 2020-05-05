@@ -13,17 +13,14 @@ reserved = {
     "true": "TRUE",
     "false": "FALSE",
 }
-tokens = ["PERIOD", "QUEST", "ID", "DIGIT", "NEWLINE"] + list(reserved.values())
+tokens = ["PERIOD", "QUEST", "ID", "NUMBER", "NEWLINE"] + list(reserved.values())
 
 t_PERIOD = r"\."
 t_QUEST = r"\?"
 t_ignore = " \t"
+t_NUMBER = r"\d+"
 
 
-def t_DIGIT(t):
-    r"""\d+"""
-    t.value = int(t.value)
-    return t
 
 
 def t_NEWLINE(t):
