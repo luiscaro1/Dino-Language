@@ -1,0 +1,79 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    A
+    AN
+    ARE
+    BY
+    FALSE
+    ID
+    IS
+    NEWLINE
+    PERIOD
+    QUEST
+    TRUE
+
+Grammar
+
+Rule 0     S' -> factor
+Rule 1     factor -> DIGIT
+Rule 2     factor -> expression
+Rule 3     expression -> expression PLUS term
+Rule 4     expression -> expression MINUS term
+Rule 5     term -> term TIMES factor
+Rule 6     term -> term DIVIDED factor
+Rule 7     expression -> term
+Rule 8     term -> factor
+
+Terminals, with rules where they appear
+
+A                    : 
+AN                   : 
+ARE                  : 
+BY                   : 
+DIGIT                : 1
+DIVIDED              : 6
+FALSE                : 
+ID                   : 
+IS                   : 
+MINUS                : 4
+NEWLINE              : 
+PERIOD               : 
+PLUS                 : 3
+QUEST                : 
+TIMES                : 5
+TRUE                 : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 2 3 4
+factor               : 5 6 8 0
+term                 : 3 4 5 6 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . factor
+    (1) factor -> . DIGIT
+    (2) factor -> . expression
+    (3) expression -> . expression PLUS term
+    (4) expression -> . expression MINUS term
+    (7) expression -> . term
+    (5) term -> . term TIMES factor
+    (6) term -> . term DIVIDED factor
+    (8) term -> . factor
+
+    DIGIT           shift and go to state 2
+
+    factor                         shift and go to state 1
+    expression                     shift and go to state 3
+    term                           shift and go to state 4
+
+state 1
+
+    (0) S' -> factor .
+    (8) term -> factor .
+
