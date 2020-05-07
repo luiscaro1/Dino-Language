@@ -12,14 +12,17 @@ reserved = {
     "by": "BY",
     "true": "TRUE",
     "false": "FALSE",
+    "what" : "WHAT"
 }
-tokens = ["PERIOD", "QUEST", "ID", "NUMBER", "NEWLINE", "COMMA"] + list(reserved.values())
+tokens = ["PERIOD", "QUEST", "ID", "NUMBER", "NEWLINE", "COMMA", "NEGATIVE", "COLON"] + list(reserved.values())
 
 t_PERIOD = r"\."
 t_QUEST = r"\?"
 t_NUMBER = r"\d+"
 t_COMMA = r"\,"
 t_ignore = " \t"
+t_NEGATIVE = r"\-"
+t_COLON = r"\:"
 
 
 

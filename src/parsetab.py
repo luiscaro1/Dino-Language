@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'A AN ARE BY DIVIDED FALSE ID IS MINUS NEWLINE NUMBER PERIOD PLUS QUEST TIMES TRUEexpression : expression PLUS term\n                  | expression MINUS term\n        term      : term TIMES factor\n                  | term DIVIDED BY factorexpression : termterm : factorfactor : numbernumber  : NUMBER'
+_lr_signature = 'A AN ARE BY COLON COMMA DIVIDED FALSE ID IS MINUS NEGATIVE NEWLINE NUMBER PERIOD PLUS QUEST TIMES TRUE WHATprogram : program sentence\n               | sentencesentence : expression\n                | definition\n                | questionexpression : termexpression : expression PLUS term\n                  | expression MINUS term\n        term      : term TIMES factor\n                  | term DIVIDED BY factorterm : factorfactor : numberdefinition : id IS A entity\n                  | id IS AN entity\n                  | id ARE COLON list\n                  | id IS COLON listquestion : WHAT IS entity QUESTquestion : IS entity bool QUEST\n                | IS entity A datatype QUESTquestion : ARE list entity QUEST\n                | ARE entity A datatype QUESTentity : id\n              | datatypedatatype : number\n                | bool\n                | listlist : entity COMMA list\n            | entitybool : TRUE\n            | FALSEnumber : NUMBER\n              | NEGATIVE NUMBERid : ID'
     
-_lr_action_items = {'NUMBER':([0,6,7,8,13,],[5,5,5,5,5,]),'$end':([1,2,3,4,5,10,11,12,14,],[0,-5,-6,-7,-8,-1,-2,-3,-4,]),'PLUS':([1,2,3,4,5,10,11,12,14,],[6,-5,-6,-7,-8,-1,-2,-3,-4,]),'MINUS':([1,2,3,4,5,10,11,12,14,],[7,-5,-6,-7,-8,-1,-2,-3,-4,]),'TIMES':([2,3,4,5,10,11,12,14,],[8,-6,-7,-8,8,8,-3,-4,]),'DIVIDED':([2,3,4,5,10,11,12,14,],[9,-6,-7,-8,9,9,-3,-4,]),'BY':([9,],[13,]),}
+_lr_action_items = {'WHAT':([0,1,2,3,4,5,6,11,12,13,14,16,24,25,26,27,28,29,30,34,35,36,37,49,50,51,52,53,54,55,57,58,60,61,62,],[10,10,-2,-3,-4,-5,-6,-11,-33,-12,-31,-1,-25,-23,-22,-24,-26,-29,-30,-32,-7,-8,-9,-10,-13,-14,-16,-28,-15,-18,-26,-20,-17,-19,-21,]),'IS':([0,1,2,3,4,5,6,7,10,11,12,13,14,16,24,25,26,27,28,29,30,34,35,36,37,49,50,51,52,53,54,55,57,58,60,61,62,],[8,8,-2,-3,-4,-5,-6,21,33,-11,-33,-12,-31,-1,-25,-23,-22,-24,-26,-29,-30,-32,-7,-8,-9,-10,-13,-14,-16,-28,-15,-18,-26,-20,-17,-19,-21,]),'ARE':([0,1,2,3,4,5,6,7,11,12,13,14,16,24,25,26,27,28,29,30,34,35,36,37,49,50,51,52,53,54,55,57,58,60,61,62,],[9,9,-2,-3,-4,-5,-6,22,-11,-33,-12,-31,-1,-25,-23,-22,-24,-26,-29,-30,-32,-7,-8,-9,-10,-13,-14,-16,-28,-15,-18,-26,-20,-17,-19,-21,]),'ID':([0,1,2,3,4,5,6,8,9,11,12,13,14,16,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,44,45,47,49,50,51,52,53,54,55,57,58,60,61,62,],[12,12,-2,-3,-4,-5,-6,12,12,-11,-33,-12,-31,-1,-25,-23,-22,-24,-26,-29,-30,12,-28,12,-32,-7,-8,-9,12,12,12,12,12,12,12,-10,-13,-14,-16,-28,-15,-18,-26,-20,-17,-19,-21,]),'NUMBER':([0,1,2,3,4,5,6,8,9,11,12,13,14,15,16,17,18,19,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,47,49,50,51,52,53,54,55,57,58,60,61,62,],[14,14,-2,-3,-4,-5,-6,14,14,-11,-33,-12,-31,34,-1,14,14,14,-25,-23,-22,-24,-26,-29,-30,14,-28,14,-32,-7,-8,-9,14,14,14,14,14,14,14,14,-10,-13,-14,-16,-28,-15,-18,-26,-20,-17,-19,-21,]),'NEGATIVE':([0,1,2,3,4,5,6,8,9,11,12,13,14,16,17,18,19,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,47,49,50,51,52,53,54,55,57,58,60,61,62,],[15,15,-2,-3,-4,-5,-6,15,15,-11,-33,-12,-31,-1,15,15,15,-25,-23,-22,-24,-26,-29,-30,15,-28,15,-32,-7,-8,-9,15,15,15,15,15,15,15,15,-10,-13,-14,-16,-28,-15,-18,-26,-20,-17,-19,-21,]),'$end':([1,2,3,4,5,6,11,12,13,14,16,24,25,26,27,28,29,30,34,35,36,37,49,50,51,52,53,54,55,57,58,60,61,62,],[0,-2,-3,-4,-5,-6,-11,-33,-12,-31,-1,-25,-23,-22,-24,-26,-29,-30,-32,-7,-8,-9,-10,-13,-14,-16,-28,-15,-18,-26,-20,-17,-19,-21,]),'PLUS':([3,6,11,13,14,34,35,36,37,49,],[17,-6,-11,-12,-31,-32,-7,-8,-9,-10,]),'MINUS':([3,6,11,13,14,34,35,36,37,49,],[18,-6,-11,-12,-31,-32,-7,-8,-9,-10,]),'TIMES':([6,11,13,14,34,35,36,37,49,],[19,-11,-12,-31,-32,19,19,-9,-10,]),'DIVIDED':([6,11,13,14,34,35,36,37,49,],[20,-11,-12,-31,-32,20,20,-9,-10,]),'TRUE':([8,9,12,14,23,24,25,26,27,28,29,30,31,32,33,34,39,40,41,42,44,45,47,53,57,],[29,29,-33,-31,29,-25,-23,-22,-24,-26,-29,-30,29,-28,29,-32,29,29,29,29,29,29,29,-28,-26,]),'FALSE':([8,9,12,14,23,24,25,26,27,28,29,30,31,32,33,34,39,40,41,42,44,45,47,53,57,],[30,30,-33,-31,30,-25,-23,-22,-24,-26,-29,-30,30,-28,30,-32,30,30,30,30,30,30,30,-28,-26,]),'A':([12,14,21,23,24,25,26,27,28,29,30,31,32,34,53,57,],[-33,-31,39,44,-25,-23,-22,-24,-26,-29,-30,-26,47,-32,-28,-26,]),'COMMA':([12,14,23,24,25,26,27,28,29,30,31,32,34,46,48,50,51,52,53,54,56,57,59,],[-33,-31,45,-25,-23,-22,-24,-26,-29,-30,-26,45,-32,45,45,45,45,-26,45,-26,-23,-26,-23,]),'QUEST':([12,14,24,25,26,27,28,29,30,34,43,46,48,53,56,57,59,],[-33,-31,-25,-23,-22,-24,-26,-29,-30,-32,55,58,60,-28,61,-26,62,]),'BY':([20,],[38,]),'AN':([21,],[40,]),'COLON':([21,22,],[41,42,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expression':([0,],[1,]),'term':([0,6,7,],[2,10,11,]),'factor':([0,6,7,8,13,],[3,3,3,12,14,]),'number':([0,6,7,8,13,],[4,4,4,4,4,]),}
+_lr_goto_items = {'program':([0,],[1,]),'sentence':([0,1,],[2,16,]),'expression':([0,1,],[3,3,]),'definition':([0,1,],[4,4,]),'question':([0,1,],[5,5,]),'term':([0,1,17,18,],[6,6,35,36,]),'id':([0,1,8,9,31,33,39,40,41,42,44,45,47,],[7,7,26,26,26,26,26,26,26,26,26,26,26,]),'factor':([0,1,17,18,19,38,],[11,11,11,11,37,49,]),'number':([0,1,8,9,17,18,19,31,33,38,39,40,41,42,44,45,47,],[13,13,27,27,13,13,13,27,27,13,27,27,27,27,27,27,27,]),'entity':([8,9,31,33,39,40,41,42,44,45,47,],[23,32,46,48,50,51,53,53,53,53,53,]),'bool':([8,9,23,31,33,39,40,41,42,44,45,47,],[24,24,43,24,24,24,24,24,24,24,24,24,]),'datatype':([8,9,31,33,39,40,41,42,44,45,47,],[25,25,25,25,25,25,25,25,56,25,59,]),'list':([8,9,31,33,39,40,41,42,44,45,47,],[28,31,28,28,28,28,52,54,28,57,28,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,13 +26,38 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> expression","S'",1,None,None,None),
-  ('expression -> expression PLUS term','expression',3,'p_binary_operators','dparse.py',25),
-  ('expression -> expression MINUS term','expression',3,'p_binary_operators','dparse.py',26),
-  ('term -> term TIMES factor','term',3,'p_binary_operators','dparse.py',27),
-  ('term -> term DIVIDED BY factor','term',4,'p_binary_operators','dparse.py',28),
-  ('expression -> term','expression',1,'p_expression','dparse.py',44),
-  ('term -> factor','term',1,'p_term','dparse.py',49),
-  ('factor -> number','factor',1,'p_factor','dparse.py',53),
-  ('number -> NUMBER','number',1,'p_number','dparse.py',57),
+  ("S' -> program","S'",1,None,None,None),
+  ('program -> program sentence','program',2,'p_program','dparse.py',9),
+  ('program -> sentence','program',1,'p_program','dparse.py',10),
+  ('sentence -> expression','sentence',1,'p_sentence','dparse.py',23),
+  ('sentence -> definition','sentence',1,'p_sentence','dparse.py',24),
+  ('sentence -> question','sentence',1,'p_sentence','dparse.py',25),
+  ('expression -> term','expression',1,'p_expression','dparse.py',30),
+  ('expression -> expression PLUS term','expression',3,'p_binary_operators','dparse.py',35),
+  ('expression -> expression MINUS term','expression',3,'p_binary_operators','dparse.py',36),
+  ('term -> term TIMES factor','term',3,'p_binary_operators','dparse.py',37),
+  ('term -> term DIVIDED BY factor','term',4,'p_binary_operators','dparse.py',38),
+  ('term -> factor','term',1,'p_term','dparse.py',54),
+  ('factor -> number','factor',1,'p_factor','dparse.py',59),
+  ('definition -> id IS A entity','definition',4,'p_definition','dparse.py',64),
+  ('definition -> id IS AN entity','definition',4,'p_definition','dparse.py',65),
+  ('definition -> id ARE COLON list','definition',4,'p_definition','dparse.py',66),
+  ('definition -> id IS COLON list','definition',4,'p_definition','dparse.py',67),
+  ('question -> WHAT IS entity QUEST','question',4,'p_question','dparse.py',76),
+  ('question -> IS entity bool QUEST','question',4,'p_question_is','dparse.py',80),
+  ('question -> IS entity A datatype QUEST','question',5,'p_question_is','dparse.py',81),
+  ('question -> ARE list entity QUEST','question',4,'p_question_are','dparse.py',89),
+  ('question -> ARE entity A datatype QUEST','question',5,'p_question_are','dparse.py',90),
+  ('entity -> id','entity',1,'p_entity','dparse.py',99),
+  ('entity -> datatype','entity',1,'p_entity','dparse.py',100),
+  ('datatype -> number','datatype',1,'p_datatype','dparse.py',105),
+  ('datatype -> bool','datatype',1,'p_datatype','dparse.py',106),
+  ('datatype -> list','datatype',1,'p_datatype','dparse.py',107),
+  ('list -> entity COMMA list','list',3,'p_list','dparse.py',112),
+  ('list -> entity','list',1,'p_list','dparse.py',113),
+  ('bool -> TRUE','bool',1,'p_bool','dparse.py',122),
+  ('bool -> FALSE','bool',1,'p_bool','dparse.py',123),
+  ('number -> NUMBER','number',1,'p_number','dparse.py',131),
+  ('number -> NEGATIVE NUMBER','number',2,'p_number','dparse.py',132),
+  ('id -> ID','id',1,'p_id','dparse.py',140),
 ]
