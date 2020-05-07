@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'A AN ARE BY DIVIDED FALSE ID IS MINUS NEWLINE NUMBER PERIOD PLUS QUEST TIMES TRUEexpression : expression PLUS term\n                  | expression MINUS term\n        term      : term TIMES factor\n                  | term DIVIDED factorexpression : termterm : factorfactor : numbernumber  : NUMBER'
+_lr_signature = 'A AN ARE BY DIVIDED FALSE ID IS MINUS NEWLINE NUMBER PERIOD PLUS QUEST TIMES TRUEexpression : expression PLUS term\n                  | expression MINUS term\n        term      : term TIMES factor\n                  | term DIVIDED BY factorexpression : termterm : factorfactor : numbernumber  : NUMBER'
     
-_lr_action_items = {'NUMBER':([0,6,7,8,9,],[5,5,5,5,5,]),'$end':([1,2,3,4,5,10,11,12,13,],[0,-5,-6,-7,-8,-1,-2,-3,-4,]),'PLUS':([1,2,3,4,5,10,11,12,13,],[6,-5,-6,-7,-8,-1,-2,-3,-4,]),'MINUS':([1,2,3,4,5,10,11,12,13,],[7,-5,-6,-7,-8,-1,-2,-3,-4,]),'TIMES':([2,3,4,5,10,11,12,13,],[8,-6,-7,-8,8,8,-3,-4,]),'DIVIDED':([2,3,4,5,10,11,12,13,],[9,-6,-7,-8,9,9,-3,-4,]),}
+_lr_action_items = {'NUMBER':([0,6,7,8,13,],[5,5,5,5,5,]),'$end':([1,2,3,4,5,10,11,12,14,],[0,-5,-6,-7,-8,-1,-2,-3,-4,]),'PLUS':([1,2,3,4,5,10,11,12,14,],[6,-5,-6,-7,-8,-1,-2,-3,-4,]),'MINUS':([1,2,3,4,5,10,11,12,14,],[7,-5,-6,-7,-8,-1,-2,-3,-4,]),'TIMES':([2,3,4,5,10,11,12,14,],[8,-6,-7,-8,8,8,-3,-4,]),'DIVIDED':([2,3,4,5,10,11,12,14,],[9,-6,-7,-8,9,9,-3,-4,]),'BY':([9,],[13,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expression':([0,],[1,]),'term':([0,6,7,],[2,10,11,]),'factor':([0,6,7,8,9,],[3,3,3,12,13,]),'number':([0,6,7,8,9,],[4,4,4,4,4,]),}
+_lr_goto_items = {'expression':([0,],[1,]),'term':([0,6,7,],[2,10,11,]),'factor':([0,6,7,8,13,],[3,3,3,12,14,]),'number':([0,6,7,8,13,],[4,4,4,4,4,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -30,9 +30,9 @@ _lr_productions = [
   ('expression -> expression PLUS term','expression',3,'p_binary_operators','dparse.py',25),
   ('expression -> expression MINUS term','expression',3,'p_binary_operators','dparse.py',26),
   ('term -> term TIMES factor','term',3,'p_binary_operators','dparse.py',27),
-  ('term -> term DIVIDED factor','term',3,'p_binary_operators','dparse.py',28),
-  ('expression -> term','expression',1,'p_expression','dparse.py',47),
-  ('term -> factor','term',1,'p_term','dparse.py',52),
-  ('factor -> number','factor',1,'p_factor','dparse.py',56),
-  ('number -> NUMBER','number',1,'p_number','dparse.py',65),
+  ('term -> term DIVIDED BY factor','term',4,'p_binary_operators','dparse.py',28),
+  ('expression -> term','expression',1,'p_expression','dparse.py',44),
+  ('term -> factor','term',1,'p_term','dparse.py',49),
+  ('factor -> number','factor',1,'p_factor','dparse.py',53),
+  ('number -> NUMBER','number',1,'p_number','dparse.py',57),
 ]
