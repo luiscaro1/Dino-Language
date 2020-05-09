@@ -103,20 +103,18 @@ def p_entity(p):
 #datatype
 def p_datatype(p):
     '''datatype : number
-                | bool
-                | list'''
+                | bool'''
     p[0] = p[1]
 
 #list
 def p_list(p):
     '''list : entity COMMA list
-            | entity'''                     ####SE EXPLOTA#####
-    if(len(p) == 2):
-        p[0] = p[1]
+            | entity'''
+    if(len(p) > 3):
+        p[0] = p[3]
+        p[0].append(p[1])      ####SE EXPLOTA####
     else:
-        list = [ p[3] ]
-        p[0] = list.extend(p[3])
-
+        p[0] = [ p[1] ]  
 #bool
 def p_bool(p):
     '''bool : TRUE

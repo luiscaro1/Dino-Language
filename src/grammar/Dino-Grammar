@@ -1,6 +1,7 @@
 TOKENS:
 Characters: a-z|A-Z
 DIGIT: 0-9
+NEGATIVE: -
 PERIOD: .
 Operators: times|plus|minus|divided by
 
