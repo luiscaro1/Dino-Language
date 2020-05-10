@@ -11,7 +11,11 @@ import dlex
 #     if not prog:
 #         raise SystemExit
 
-prog = dparse.parse("are pigs , chicken animals ?")
+fhand = open("test.txt")
+
+data = fhand.read()
+
+prog = dparse.parse(data)
 print(prog)
 
 #
@@ -30,19 +34,19 @@ print(prog)
 #     if not prog:
 #         continue
 
-    # keys = list(prog)
-    # if keys[0] > 0:
-    #     b.add_statements(prog)
-    # else:
-    #     stat = prog[keys[0]]
-    #     if stat[0] == 'RUN':
-    #         try:
-    #             b.run()
-    #         except RuntimeError:
-    #             pass
-    #     elif stat[0] == 'LIST':
-    #         b.list()
-    #     elif stat[0] == 'BLANK':
-    #         b.del_line(stat[1])
-    #     elif stat[0] == 'NEW':
-    #         b.new()
+# keys = list(prog)
+# if keys[0] > 0:
+#     b.add_statements(prog)
+# else:
+#     stat = prog[keys[0]]
+#     if stat[0] == 'RUN':
+#         try:
+#             b.run()
+#         except RuntimeError:
+#             pass
+#     elif stat[0] == 'LIST':
+#         b.list()
+#     elif stat[0] == 'BLANK':
+#         b.del_line(stat[1])
+#     elif stat[0] == 'NEW':
+#         b.new()

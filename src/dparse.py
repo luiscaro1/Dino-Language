@@ -3,6 +3,7 @@ import dlex
 import sys
 
 tokens = dlex.tokens
+sen_num = 0
 
 
 def p_program(p):
@@ -10,27 +11,35 @@ def p_program(p):
                | sentence"""
 
     if len(p) == 2 and p[1]:
-        p[0] = p[1]
+        p[0] = {}
+        sen, stat = p[1]
+        p[0][sen] = stat
     elif len(p) == 3:
         p[0] = p[1]
         if not p[0]:
             p[0] = {}
         if p[2]:
-            line, sent = p[2]
-            p[0][line] = sent
+            a = p[2]
+            sen, stat = p[2]
+            p[0][sen] = stat
+
 
 def p_sentence(p):
-    '''sentence : expression
-                | definition
+    '''sentence : expression PERIOD
+                | definition PERIOD
                 | question'''
-    p[0] = p[1]
+    global sen_num
+    sen_num += 1
+    p[0] = (sen_num, p[1])
 
-#expression
+
+# expression
 def p_expression(p):
     """expression : term"""
     p[0] = p[1]
 
-#expression operations
+
+# expression operations
 def p_binary_operators(p):
     """expression : expression PLUS term
                   | expression MINUS term
@@ -47,75 +56,88 @@ def p_binary_operators(p):
         if p[4] != 0:
             p[0] = int(p[1] / p[4])
         else:
-            print("ZeroDivisionError: division by zero")
+            print("ZeroDivisionError: division by zero!")
 
-#term
+
+# term
 def p_term(p):
     """term : factor"""
     p[0] = p[1]
 
-#factor
+
+# factor
 def p_factor(p):
     """factor : number"""
     p[0] = p[1]
 
-#definition
+
+# definition
 def p_definition(p):
-    '''definition : id IS A entity
-                  | id IS AN entity
+    '''definition : id IS A id
+                  | id IS AN id
                   | id ARE COLON list
-                  | id IS COLON list'''
-    if p[3] == "a" or p[3] == "an":
-        p[0] = (p[1] , p[4])
-    elif p[2] == "are" or p[2] == "is":
-        p[0] = (p[1] , p[4])
+                  | id IS COLON list
+                  | id IS datatype'''
+    if len(p) == 4:
+        p[0] = (p[1], p[3])
+    else:
+        p[0] = (p[1], p[4])
 
 
-#question
+# question
 def p_question(p):
     '''question : WHAT IS entity QUEST'''
     p[0] = p[3]
 
+
 def p_question_is(p):
     '''question : IS entity bool QUEST
-                | IS entity A datatype QUEST'''
+                | IS entity A datatype QUEST
+                | IS entity entity QUEST'''
     if p[1] == 'is':
         if p[3] == 'a':
-            p[0] = (p[2] , p[4])
+            p[0] = (p[2], p[4])
         else:
-            p[0] = (p[2] , p[3])
+            p[0] = (p[2], p[3])
+
 
 def p_question_are(p):
     '''question : ARE list entity QUEST
                 | ARE entity A datatype QUEST'''
     if p[1] == 'are':
         if p[3] == 'a':
-            p[0] = (p[2] , p[4])
+            p[0] = (p[2], p[4])
         else:
-            p[0] = (p[2] , p[3])
+            p[0] = (p[2], p[3])
 
-#entity
+
+# entity
 def p_entity(p):
     '''entity : id
               | datatype'''
     p[0] = p[1]
 
-#datatype
+
+# datatype
 def p_datatype(p):
     '''datatype : number
                 | bool'''
     p[0] = p[1]
 
-#list
+
+# list
 def p_list(p):
     '''list : entity COMMA list
             | entity'''
-    if(len(p) > 3):
+    if (len(p) > 3):
         p[0] = p[3]
-        p[0].append(p[1])      ####SE EXPLOTA####
+        p[0].append(p[1])
     else:
-        p[0] = [ p[1] ]  
-#bool
+        p[0] = [p[1]]
+    # bool
+
+
+# bool
 def p_bool(p):
     '''bool : TRUE
             | FALSE'''
@@ -124,7 +146,8 @@ def p_bool(p):
     else:
         p[0] = False
 
-#number
+
+# number
 def p_number(p):
     '''number : NUMBER
               | NEGATIVE NUMBER'''
@@ -133,12 +156,14 @@ def p_number(p):
     else:
         p[0] = eval(p[1])
 
-#id
+
+# id
 def p_id(p):
     '''id : ID'''
     p[0] = p[1]
 
-#error
+
+# error
 def p_error(p):
     if not p:
         print("SYNTAX ERROR AT EOF")
@@ -154,5 +179,4 @@ def parse(data, debug=0):
         return None
     return p
 
-
-#brandon, luis,                                                                                      joshua
+# brandon, luis,                                                                                      joshua
