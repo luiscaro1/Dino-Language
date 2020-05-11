@@ -1,9 +1,5 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
-Unused terminals:
-
-    NEWLINE
-
 Grammar
 
 Rule 0     S' -> program
@@ -25,11 +21,11 @@ Rule 15    definition -> id ARE COLON list
 Rule 16    definition -> id IS COLON list
 Rule 17    definition -> id IS datatype
 Rule 18    question -> WHAT IS entity QUEST
-Rule 19    question -> IS entity bool QUEST
-Rule 20    question -> IS entity A datatype QUEST
-Rule 21    question -> IS entity entity QUEST
-Rule 22    question -> ARE list entity QUEST
-Rule 23    question -> ARE entity A datatype QUEST
+Rule 19    question -> IS_UP entity bool QUEST
+Rule 20    question -> IS_UP entity A datatype QUEST
+Rule 21    question -> IS_UP entity entity QUEST
+Rule 22    question -> ARE_UP list entity QUEST
+Rule 23    question -> ARE_UP entity A datatype QUEST
 Rule 24    entity -> id
 Rule 25    entity -> datatype
 Rule 26    datatype -> number
@@ -46,17 +42,18 @@ Terminals, with rules where they appear
 
 A                    : 13 20 23
 AN                   : 14
-ARE                  : 15 22 23
+ARE                  : 15
+ARE_UP               : 22 23
 BY                   : 10
 COLON                : 15 16
 COMMA                : 28
 DIVIDED              : 10
 FALSE                : 31
 ID                   : 34
-IS                   : 13 14 16 17 18 19 20 21
+IS                   : 13 14 16 17 18
+IS_UP                : 19 20 21
 MINUS                : 8
 NEGATIVE             : 33
-NEWLINE              : 
 NUMBER               : 32 33
 PERIOD               : 3 4
 PLUS                 : 7
@@ -101,11 +98,11 @@ state 0
     (16) definition -> . id IS COLON list
     (17) definition -> . id IS datatype
     (18) question -> . WHAT IS entity QUEST
-    (19) question -> . IS entity bool QUEST
-    (20) question -> . IS entity A datatype QUEST
-    (21) question -> . IS entity entity QUEST
-    (22) question -> . ARE list entity QUEST
-    (23) question -> . ARE entity A datatype QUEST
+    (19) question -> . IS_UP entity bool QUEST
+    (20) question -> . IS_UP entity A datatype QUEST
+    (21) question -> . IS_UP entity entity QUEST
+    (22) question -> . ARE_UP list entity QUEST
+    (23) question -> . ARE_UP entity A datatype QUEST
     (9) term -> . term TIMES factor
     (10) term -> . term DIVIDED BY factor
     (11) term -> . factor
@@ -114,9 +111,9 @@ state 0
     (32) number -> . NUMBER
     (33) number -> . NEGATIVE NUMBER
 
-    WHAT            shift and go to state 10
-    IS              shift and go to state 8
-    ARE             shift and go to state 9
+    WHAT            shift and go to state 8
+    IS_UP           shift and go to state 9
+    ARE_UP          shift and go to state 10
     ID              shift and go to state 12
     NUMBER          shift and go to state 14
     NEGATIVE        shift and go to state 15
@@ -147,11 +144,11 @@ state 1
     (16) definition -> . id IS COLON list
     (17) definition -> . id IS datatype
     (18) question -> . WHAT IS entity QUEST
-    (19) question -> . IS entity bool QUEST
-    (20) question -> . IS entity A datatype QUEST
-    (21) question -> . IS entity entity QUEST
-    (22) question -> . ARE list entity QUEST
-    (23) question -> . ARE entity A datatype QUEST
+    (19) question -> . IS_UP entity bool QUEST
+    (20) question -> . IS_UP entity A datatype QUEST
+    (21) question -> . IS_UP entity entity QUEST
+    (22) question -> . ARE_UP list entity QUEST
+    (23) question -> . ARE_UP entity A datatype QUEST
     (9) term -> . term TIMES factor
     (10) term -> . term DIVIDED BY factor
     (11) term -> . factor
@@ -160,9 +157,9 @@ state 1
     (32) number -> . NUMBER
     (33) number -> . NEGATIVE NUMBER
 
-    WHAT            shift and go to state 10
-    IS              shift and go to state 8
-    ARE             shift and go to state 9
+    WHAT            shift and go to state 8
+    IS_UP           shift and go to state 9
+    ARE_UP          shift and go to state 10
     ID              shift and go to state 12
     NUMBER          shift and go to state 14
     NEGATIVE        shift and go to state 15
@@ -181,8 +178,8 @@ state 2
     (2) program -> sentence .
 
     WHAT            reduce using rule 2 (program -> sentence .)
-    IS              reduce using rule 2 (program -> sentence .)
-    ARE             reduce using rule 2 (program -> sentence .)
+    IS_UP           reduce using rule 2 (program -> sentence .)
+    ARE_UP          reduce using rule 2 (program -> sentence .)
     ID              reduce using rule 2 (program -> sentence .)
     NUMBER          reduce using rule 2 (program -> sentence .)
     NEGATIVE        reduce using rule 2 (program -> sentence .)
@@ -212,8 +209,8 @@ state 5
     (5) sentence -> question .
 
     WHAT            reduce using rule 5 (sentence -> question .)
-    IS              reduce using rule 5 (sentence -> question .)
-    ARE             reduce using rule 5 (sentence -> question .)
+    IS_UP           reduce using rule 5 (sentence -> question .)
+    ARE_UP          reduce using rule 5 (sentence -> question .)
     ID              reduce using rule 5 (sentence -> question .)
     NUMBER          reduce using rule 5 (sentence -> question .)
     NEGATIVE        reduce using rule 5 (sentence -> question .)
@@ -247,9 +244,16 @@ state 7
 
 state 8
 
-    (19) question -> IS . entity bool QUEST
-    (20) question -> IS . entity A datatype QUEST
-    (21) question -> IS . entity entity QUEST
+    (18) question -> WHAT . IS entity QUEST
+
+    IS              shift and go to state 25
+
+
+state 9
+
+    (19) question -> IS_UP . entity bool QUEST
+    (20) question -> IS_UP . entity A datatype QUEST
+    (21) question -> IS_UP . entity entity QUEST
     (24) entity -> . id
     (25) entity -> . datatype
     (34) id -> . ID
@@ -263,19 +267,19 @@ state 8
     ID              shift and go to state 12
     NUMBER          shift and go to state 14
     NEGATIVE        shift and go to state 15
-    TRUE            shift and go to state 30
-    FALSE           shift and go to state 31
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
 
-    entity                         shift and go to state 25
-    bool                           shift and go to state 26
-    datatype                       shift and go to state 27
-    id                             shift and go to state 28
-    number                         shift and go to state 29
+    entity                         shift and go to state 26
+    bool                           shift and go to state 27
+    datatype                       shift and go to state 28
+    id                             shift and go to state 29
+    number                         shift and go to state 30
 
-state 9
+state 10
 
-    (22) question -> ARE . list entity QUEST
-    (23) question -> ARE . entity A datatype QUEST
+    (22) question -> ARE_UP . list entity QUEST
+    (23) question -> ARE_UP . entity A datatype QUEST
     (28) list -> . entity COMMA list
     (29) list -> . entity
     (24) entity -> . id
@@ -291,22 +295,15 @@ state 9
     ID              shift and go to state 12
     NUMBER          shift and go to state 14
     NEGATIVE        shift and go to state 15
-    TRUE            shift and go to state 30
-    FALSE           shift and go to state 31
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
 
-    list                           shift and go to state 32
-    entity                         shift and go to state 33
-    datatype                       shift and go to state 27
-    id                             shift and go to state 28
-    number                         shift and go to state 29
-    bool                           shift and go to state 26
-
-state 10
-
-    (18) question -> WHAT . IS entity QUEST
-
-    IS              shift and go to state 34
-
+    list                           shift and go to state 33
+    entity                         shift and go to state 34
+    datatype                       shift and go to state 28
+    id                             shift and go to state 29
+    number                         shift and go to state 30
+    bool                           shift and go to state 27
 
 state 11
 
@@ -378,8 +375,8 @@ state 16
     (1) program -> program sentence .
 
     WHAT            reduce using rule 1 (program -> program sentence .)
-    IS              reduce using rule 1 (program -> program sentence .)
-    ARE             reduce using rule 1 (program -> program sentence .)
+    IS_UP           reduce using rule 1 (program -> program sentence .)
+    ARE_UP          reduce using rule 1 (program -> program sentence .)
     ID              reduce using rule 1 (program -> program sentence .)
     NUMBER          reduce using rule 1 (program -> program sentence .)
     NEGATIVE        reduce using rule 1 (program -> program sentence .)
@@ -391,8 +388,8 @@ state 17
     (3) sentence -> expression PERIOD .
 
     WHAT            reduce using rule 3 (sentence -> expression PERIOD .)
-    IS              reduce using rule 3 (sentence -> expression PERIOD .)
-    ARE             reduce using rule 3 (sentence -> expression PERIOD .)
+    IS_UP           reduce using rule 3 (sentence -> expression PERIOD .)
+    ARE_UP          reduce using rule 3 (sentence -> expression PERIOD .)
     ID              reduce using rule 3 (sentence -> expression PERIOD .)
     NUMBER          reduce using rule 3 (sentence -> expression PERIOD .)
     NEGATIVE        reduce using rule 3 (sentence -> expression PERIOD .)
@@ -438,8 +435,8 @@ state 20
     (4) sentence -> definition PERIOD .
 
     WHAT            reduce using rule 4 (sentence -> definition PERIOD .)
-    IS              reduce using rule 4 (sentence -> definition PERIOD .)
-    ARE             reduce using rule 4 (sentence -> definition PERIOD .)
+    IS_UP           reduce using rule 4 (sentence -> definition PERIOD .)
+    ARE_UP          reduce using rule 4 (sentence -> definition PERIOD .)
     ID              reduce using rule 4 (sentence -> definition PERIOD .)
     NUMBER          reduce using rule 4 (sentence -> definition PERIOD .)
     NEGATIVE        reduce using rule 4 (sentence -> definition PERIOD .)
@@ -484,12 +481,12 @@ state 23
     COLON           shift and go to state 42
     NUMBER          shift and go to state 14
     NEGATIVE        shift and go to state 15
-    TRUE            shift and go to state 30
-    FALSE           shift and go to state 31
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
 
     datatype                       shift and go to state 43
-    number                         shift and go to state 29
-    bool                           shift and go to state 26
+    number                         shift and go to state 30
+    bool                           shift and go to state 27
 
 state 24
 
@@ -499,164 +496,6 @@ state 24
 
 
 state 25
-
-    (19) question -> IS entity . bool QUEST
-    (20) question -> IS entity . A datatype QUEST
-    (21) question -> IS entity . entity QUEST
-    (30) bool -> . TRUE
-    (31) bool -> . FALSE
-    (24) entity -> . id
-    (25) entity -> . datatype
-    (34) id -> . ID
-    (26) datatype -> . number
-    (27) datatype -> . bool
-    (32) number -> . NUMBER
-    (33) number -> . NEGATIVE NUMBER
-
-    A               shift and go to state 47
-    TRUE            shift and go to state 30
-    FALSE           shift and go to state 31
-    ID              shift and go to state 12
-    NUMBER          shift and go to state 14
-    NEGATIVE        shift and go to state 15
-
-    entity                         shift and go to state 45
-    bool                           shift and go to state 46
-    datatype                       shift and go to state 27
-    id                             shift and go to state 28
-    number                         shift and go to state 29
-
-state 26
-
-    (27) datatype -> bool .
-
-    A               reduce using rule 27 (datatype -> bool .)
-    TRUE            reduce using rule 27 (datatype -> bool .)
-    FALSE           reduce using rule 27 (datatype -> bool .)
-    ID              reduce using rule 27 (datatype -> bool .)
-    NUMBER          reduce using rule 27 (datatype -> bool .)
-    NEGATIVE        reduce using rule 27 (datatype -> bool .)
-    COMMA           reduce using rule 27 (datatype -> bool .)
-    PERIOD          reduce using rule 27 (datatype -> bool .)
-    QUEST           reduce using rule 27 (datatype -> bool .)
-
-
-state 27
-
-    (25) entity -> datatype .
-
-    A               reduce using rule 25 (entity -> datatype .)
-    TRUE            reduce using rule 25 (entity -> datatype .)
-    FALSE           reduce using rule 25 (entity -> datatype .)
-    ID              reduce using rule 25 (entity -> datatype .)
-    NUMBER          reduce using rule 25 (entity -> datatype .)
-    NEGATIVE        reduce using rule 25 (entity -> datatype .)
-    COMMA           reduce using rule 25 (entity -> datatype .)
-    QUEST           reduce using rule 25 (entity -> datatype .)
-    PERIOD          reduce using rule 25 (entity -> datatype .)
-
-
-state 28
-
-    (24) entity -> id .
-
-    A               reduce using rule 24 (entity -> id .)
-    TRUE            reduce using rule 24 (entity -> id .)
-    FALSE           reduce using rule 24 (entity -> id .)
-    ID              reduce using rule 24 (entity -> id .)
-    NUMBER          reduce using rule 24 (entity -> id .)
-    NEGATIVE        reduce using rule 24 (entity -> id .)
-    COMMA           reduce using rule 24 (entity -> id .)
-    QUEST           reduce using rule 24 (entity -> id .)
-    PERIOD          reduce using rule 24 (entity -> id .)
-
-
-state 29
-
-    (26) datatype -> number .
-
-    A               reduce using rule 26 (datatype -> number .)
-    TRUE            reduce using rule 26 (datatype -> number .)
-    FALSE           reduce using rule 26 (datatype -> number .)
-    ID              reduce using rule 26 (datatype -> number .)
-    NUMBER          reduce using rule 26 (datatype -> number .)
-    NEGATIVE        reduce using rule 26 (datatype -> number .)
-    COMMA           reduce using rule 26 (datatype -> number .)
-    PERIOD          reduce using rule 26 (datatype -> number .)
-    QUEST           reduce using rule 26 (datatype -> number .)
-
-
-state 30
-
-    (30) bool -> TRUE .
-
-    A               reduce using rule 30 (bool -> TRUE .)
-    TRUE            reduce using rule 30 (bool -> TRUE .)
-    FALSE           reduce using rule 30 (bool -> TRUE .)
-    ID              reduce using rule 30 (bool -> TRUE .)
-    NUMBER          reduce using rule 30 (bool -> TRUE .)
-    NEGATIVE        reduce using rule 30 (bool -> TRUE .)
-    COMMA           reduce using rule 30 (bool -> TRUE .)
-    PERIOD          reduce using rule 30 (bool -> TRUE .)
-    QUEST           reduce using rule 30 (bool -> TRUE .)
-
-
-state 31
-
-    (31) bool -> FALSE .
-
-    A               reduce using rule 31 (bool -> FALSE .)
-    TRUE            reduce using rule 31 (bool -> FALSE .)
-    FALSE           reduce using rule 31 (bool -> FALSE .)
-    ID              reduce using rule 31 (bool -> FALSE .)
-    NUMBER          reduce using rule 31 (bool -> FALSE .)
-    NEGATIVE        reduce using rule 31 (bool -> FALSE .)
-    COMMA           reduce using rule 31 (bool -> FALSE .)
-    PERIOD          reduce using rule 31 (bool -> FALSE .)
-    QUEST           reduce using rule 31 (bool -> FALSE .)
-
-
-state 32
-
-    (22) question -> ARE list . entity QUEST
-    (24) entity -> . id
-    (25) entity -> . datatype
-    (34) id -> . ID
-    (26) datatype -> . number
-    (27) datatype -> . bool
-    (32) number -> . NUMBER
-    (33) number -> . NEGATIVE NUMBER
-    (30) bool -> . TRUE
-    (31) bool -> . FALSE
-
-    ID              shift and go to state 12
-    NUMBER          shift and go to state 14
-    NEGATIVE        shift and go to state 15
-    TRUE            shift and go to state 30
-    FALSE           shift and go to state 31
-
-    entity                         shift and go to state 48
-    id                             shift and go to state 28
-    datatype                       shift and go to state 27
-    number                         shift and go to state 29
-    bool                           shift and go to state 26
-
-state 33
-
-    (23) question -> ARE entity . A datatype QUEST
-    (28) list -> entity . COMMA list
-    (29) list -> entity .
-
-    A               shift and go to state 49
-    COMMA           shift and go to state 50
-    ID              reduce using rule 29 (list -> entity .)
-    NUMBER          reduce using rule 29 (list -> entity .)
-    NEGATIVE        reduce using rule 29 (list -> entity .)
-    TRUE            reduce using rule 29 (list -> entity .)
-    FALSE           reduce using rule 29 (list -> entity .)
-
-
-state 34
 
     (18) question -> WHAT IS . entity QUEST
     (24) entity -> . id
@@ -672,14 +511,172 @@ state 34
     ID              shift and go to state 12
     NUMBER          shift and go to state 14
     NEGATIVE        shift and go to state 15
-    TRUE            shift and go to state 30
-    FALSE           shift and go to state 31
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
 
-    entity                         shift and go to state 51
-    id                             shift and go to state 28
-    datatype                       shift and go to state 27
-    number                         shift and go to state 29
-    bool                           shift and go to state 26
+    entity                         shift and go to state 45
+    id                             shift and go to state 29
+    datatype                       shift and go to state 28
+    number                         shift and go to state 30
+    bool                           shift and go to state 27
+
+state 26
+
+    (19) question -> IS_UP entity . bool QUEST
+    (20) question -> IS_UP entity . A datatype QUEST
+    (21) question -> IS_UP entity . entity QUEST
+    (30) bool -> . TRUE
+    (31) bool -> . FALSE
+    (24) entity -> . id
+    (25) entity -> . datatype
+    (34) id -> . ID
+    (26) datatype -> . number
+    (27) datatype -> . bool
+    (32) number -> . NUMBER
+    (33) number -> . NEGATIVE NUMBER
+
+    A               shift and go to state 48
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+    ID              shift and go to state 12
+    NUMBER          shift and go to state 14
+    NEGATIVE        shift and go to state 15
+
+    entity                         shift and go to state 46
+    bool                           shift and go to state 47
+    datatype                       shift and go to state 28
+    id                             shift and go to state 29
+    number                         shift and go to state 30
+
+state 27
+
+    (27) datatype -> bool .
+
+    A               reduce using rule 27 (datatype -> bool .)
+    TRUE            reduce using rule 27 (datatype -> bool .)
+    FALSE           reduce using rule 27 (datatype -> bool .)
+    ID              reduce using rule 27 (datatype -> bool .)
+    NUMBER          reduce using rule 27 (datatype -> bool .)
+    NEGATIVE        reduce using rule 27 (datatype -> bool .)
+    COMMA           reduce using rule 27 (datatype -> bool .)
+    PERIOD          reduce using rule 27 (datatype -> bool .)
+    QUEST           reduce using rule 27 (datatype -> bool .)
+
+
+state 28
+
+    (25) entity -> datatype .
+
+    A               reduce using rule 25 (entity -> datatype .)
+    TRUE            reduce using rule 25 (entity -> datatype .)
+    FALSE           reduce using rule 25 (entity -> datatype .)
+    ID              reduce using rule 25 (entity -> datatype .)
+    NUMBER          reduce using rule 25 (entity -> datatype .)
+    NEGATIVE        reduce using rule 25 (entity -> datatype .)
+    COMMA           reduce using rule 25 (entity -> datatype .)
+    QUEST           reduce using rule 25 (entity -> datatype .)
+    PERIOD          reduce using rule 25 (entity -> datatype .)
+
+
+state 29
+
+    (24) entity -> id .
+
+    A               reduce using rule 24 (entity -> id .)
+    TRUE            reduce using rule 24 (entity -> id .)
+    FALSE           reduce using rule 24 (entity -> id .)
+    ID              reduce using rule 24 (entity -> id .)
+    NUMBER          reduce using rule 24 (entity -> id .)
+    NEGATIVE        reduce using rule 24 (entity -> id .)
+    COMMA           reduce using rule 24 (entity -> id .)
+    QUEST           reduce using rule 24 (entity -> id .)
+    PERIOD          reduce using rule 24 (entity -> id .)
+
+
+state 30
+
+    (26) datatype -> number .
+
+    A               reduce using rule 26 (datatype -> number .)
+    TRUE            reduce using rule 26 (datatype -> number .)
+    FALSE           reduce using rule 26 (datatype -> number .)
+    ID              reduce using rule 26 (datatype -> number .)
+    NUMBER          reduce using rule 26 (datatype -> number .)
+    NEGATIVE        reduce using rule 26 (datatype -> number .)
+    COMMA           reduce using rule 26 (datatype -> number .)
+    PERIOD          reduce using rule 26 (datatype -> number .)
+    QUEST           reduce using rule 26 (datatype -> number .)
+
+
+state 31
+
+    (30) bool -> TRUE .
+
+    A               reduce using rule 30 (bool -> TRUE .)
+    TRUE            reduce using rule 30 (bool -> TRUE .)
+    FALSE           reduce using rule 30 (bool -> TRUE .)
+    ID              reduce using rule 30 (bool -> TRUE .)
+    NUMBER          reduce using rule 30 (bool -> TRUE .)
+    NEGATIVE        reduce using rule 30 (bool -> TRUE .)
+    COMMA           reduce using rule 30 (bool -> TRUE .)
+    PERIOD          reduce using rule 30 (bool -> TRUE .)
+    QUEST           reduce using rule 30 (bool -> TRUE .)
+
+
+state 32
+
+    (31) bool -> FALSE .
+
+    A               reduce using rule 31 (bool -> FALSE .)
+    TRUE            reduce using rule 31 (bool -> FALSE .)
+    FALSE           reduce using rule 31 (bool -> FALSE .)
+    ID              reduce using rule 31 (bool -> FALSE .)
+    NUMBER          reduce using rule 31 (bool -> FALSE .)
+    NEGATIVE        reduce using rule 31 (bool -> FALSE .)
+    COMMA           reduce using rule 31 (bool -> FALSE .)
+    PERIOD          reduce using rule 31 (bool -> FALSE .)
+    QUEST           reduce using rule 31 (bool -> FALSE .)
+
+
+state 33
+
+    (22) question -> ARE_UP list . entity QUEST
+    (24) entity -> . id
+    (25) entity -> . datatype
+    (34) id -> . ID
+    (26) datatype -> . number
+    (27) datatype -> . bool
+    (32) number -> . NUMBER
+    (33) number -> . NEGATIVE NUMBER
+    (30) bool -> . TRUE
+    (31) bool -> . FALSE
+
+    ID              shift and go to state 12
+    NUMBER          shift and go to state 14
+    NEGATIVE        shift and go to state 15
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+
+    entity                         shift and go to state 49
+    id                             shift and go to state 29
+    datatype                       shift and go to state 28
+    number                         shift and go to state 30
+    bool                           shift and go to state 27
+
+state 34
+
+    (23) question -> ARE_UP entity . A datatype QUEST
+    (28) list -> entity . COMMA list
+    (29) list -> entity .
+
+    A               shift and go to state 50
+    COMMA           shift and go to state 51
+    ID              reduce using rule 29 (list -> entity .)
+    NUMBER          reduce using rule 29 (list -> entity .)
+    NEGATIVE        reduce using rule 29 (list -> entity .)
+    TRUE            reduce using rule 29 (list -> entity .)
+    FALSE           reduce using rule 29 (list -> entity .)
+
 
 state 35
 
@@ -786,15 +783,15 @@ state 42
     ID              shift and go to state 12
     NUMBER          shift and go to state 14
     NEGATIVE        shift and go to state 15
-    TRUE            shift and go to state 30
-    FALSE           shift and go to state 31
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
 
-    id                             shift and go to state 28
+    id                             shift and go to state 29
     list                           shift and go to state 55
     entity                         shift and go to state 56
-    datatype                       shift and go to state 27
-    number                         shift and go to state 29
-    bool                           shift and go to state 26
+    datatype                       shift and go to state 28
+    number                         shift and go to state 30
+    bool                           shift and go to state 27
 
 state 43
 
@@ -821,63 +818,44 @@ state 44
     ID              shift and go to state 12
     NUMBER          shift and go to state 14
     NEGATIVE        shift and go to state 15
-    TRUE            shift and go to state 30
-    FALSE           shift and go to state 31
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
 
-    id                             shift and go to state 28
+    id                             shift and go to state 29
     list                           shift and go to state 57
     entity                         shift and go to state 56
-    datatype                       shift and go to state 27
-    number                         shift and go to state 29
-    bool                           shift and go to state 26
+    datatype                       shift and go to state 28
+    number                         shift and go to state 30
+    bool                           shift and go to state 27
 
 state 45
 
-    (21) question -> IS entity entity . QUEST
+    (18) question -> WHAT IS entity . QUEST
 
     QUEST           shift and go to state 58
 
 
 state 46
 
-    (19) question -> IS entity bool . QUEST
-    (27) datatype -> bool .
+    (21) question -> IS_UP entity entity . QUEST
 
-  ! shift/reduce conflict for QUEST resolved as shift
     QUEST           shift and go to state 59
-
-  ! QUEST           [ reduce using rule 27 (datatype -> bool .) ]
 
 
 state 47
 
-    (20) question -> IS entity A . datatype QUEST
-    (26) datatype -> . number
-    (27) datatype -> . bool
-    (32) number -> . NUMBER
-    (33) number -> . NEGATIVE NUMBER
-    (30) bool -> . TRUE
-    (31) bool -> . FALSE
+    (19) question -> IS_UP entity bool . QUEST
+    (27) datatype -> bool .
 
-    NUMBER          shift and go to state 14
-    NEGATIVE        shift and go to state 15
-    TRUE            shift and go to state 30
-    FALSE           shift and go to state 31
+  ! shift/reduce conflict for QUEST resolved as shift
+    QUEST           shift and go to state 60
 
-    datatype                       shift and go to state 60
-    number                         shift and go to state 29
-    bool                           shift and go to state 26
+  ! QUEST           [ reduce using rule 27 (datatype -> bool .) ]
+
 
 state 48
 
-    (22) question -> ARE list entity . QUEST
-
-    QUEST           shift and go to state 61
-
-
-state 49
-
-    (23) question -> ARE entity A . datatype QUEST
+    (20) question -> IS_UP entity A . datatype QUEST
     (26) datatype -> . number
     (27) datatype -> . bool
     (32) number -> . NUMBER
@@ -887,14 +865,40 @@ state 49
 
     NUMBER          shift and go to state 14
     NEGATIVE        shift and go to state 15
-    TRUE            shift and go to state 30
-    FALSE           shift and go to state 31
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
 
-    datatype                       shift and go to state 62
-    number                         shift and go to state 29
-    bool                           shift and go to state 26
+    datatype                       shift and go to state 61
+    number                         shift and go to state 30
+    bool                           shift and go to state 27
+
+state 49
+
+    (22) question -> ARE_UP list entity . QUEST
+
+    QUEST           shift and go to state 62
+
 
 state 50
+
+    (23) question -> ARE_UP entity A . datatype QUEST
+    (26) datatype -> . number
+    (27) datatype -> . bool
+    (32) number -> . NUMBER
+    (33) number -> . NEGATIVE NUMBER
+    (30) bool -> . TRUE
+    (31) bool -> . FALSE
+
+    NUMBER          shift and go to state 14
+    NEGATIVE        shift and go to state 15
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
+
+    datatype                       shift and go to state 63
+    number                         shift and go to state 30
+    bool                           shift and go to state 27
+
+state 51
 
     (28) list -> entity COMMA . list
     (28) list -> . entity COMMA list
@@ -912,22 +916,15 @@ state 50
     ID              shift and go to state 12
     NUMBER          shift and go to state 14
     NEGATIVE        shift and go to state 15
-    TRUE            shift and go to state 30
-    FALSE           shift and go to state 31
+    TRUE            shift and go to state 31
+    FALSE           shift and go to state 32
 
     entity                         shift and go to state 56
-    list                           shift and go to state 63
-    id                             shift and go to state 28
-    datatype                       shift and go to state 27
-    number                         shift and go to state 29
-    bool                           shift and go to state 26
-
-state 51
-
-    (18) question -> WHAT IS entity . QUEST
-
-    QUEST           shift and go to state 64
-
+    list                           shift and go to state 64
+    id                             shift and go to state 29
+    datatype                       shift and go to state 28
+    number                         shift and go to state 30
+    bool                           shift and go to state 27
 
 state 52
 
@@ -966,7 +963,7 @@ state 56
     (28) list -> entity . COMMA list
     (29) list -> entity .
 
-    COMMA           shift and go to state 50
+    COMMA           shift and go to state 51
     PERIOD          reduce using rule 29 (list -> entity .)
     ID              reduce using rule 29 (list -> entity .)
     NUMBER          reduce using rule 29 (list -> entity .)
@@ -984,58 +981,71 @@ state 57
 
 state 58
 
-    (21) question -> IS entity entity QUEST .
+    (18) question -> WHAT IS entity QUEST .
 
-    WHAT            reduce using rule 21 (question -> IS entity entity QUEST .)
-    IS              reduce using rule 21 (question -> IS entity entity QUEST .)
-    ARE             reduce using rule 21 (question -> IS entity entity QUEST .)
-    ID              reduce using rule 21 (question -> IS entity entity QUEST .)
-    NUMBER          reduce using rule 21 (question -> IS entity entity QUEST .)
-    NEGATIVE        reduce using rule 21 (question -> IS entity entity QUEST .)
-    $end            reduce using rule 21 (question -> IS entity entity QUEST .)
+    WHAT            reduce using rule 18 (question -> WHAT IS entity QUEST .)
+    IS_UP           reduce using rule 18 (question -> WHAT IS entity QUEST .)
+    ARE_UP          reduce using rule 18 (question -> WHAT IS entity QUEST .)
+    ID              reduce using rule 18 (question -> WHAT IS entity QUEST .)
+    NUMBER          reduce using rule 18 (question -> WHAT IS entity QUEST .)
+    NEGATIVE        reduce using rule 18 (question -> WHAT IS entity QUEST .)
+    $end            reduce using rule 18 (question -> WHAT IS entity QUEST .)
 
 
 state 59
 
-    (19) question -> IS entity bool QUEST .
+    (21) question -> IS_UP entity entity QUEST .
 
-    WHAT            reduce using rule 19 (question -> IS entity bool QUEST .)
-    IS              reduce using rule 19 (question -> IS entity bool QUEST .)
-    ARE             reduce using rule 19 (question -> IS entity bool QUEST .)
-    ID              reduce using rule 19 (question -> IS entity bool QUEST .)
-    NUMBER          reduce using rule 19 (question -> IS entity bool QUEST .)
-    NEGATIVE        reduce using rule 19 (question -> IS entity bool QUEST .)
-    $end            reduce using rule 19 (question -> IS entity bool QUEST .)
+    WHAT            reduce using rule 21 (question -> IS_UP entity entity QUEST .)
+    IS_UP           reduce using rule 21 (question -> IS_UP entity entity QUEST .)
+    ARE_UP          reduce using rule 21 (question -> IS_UP entity entity QUEST .)
+    ID              reduce using rule 21 (question -> IS_UP entity entity QUEST .)
+    NUMBER          reduce using rule 21 (question -> IS_UP entity entity QUEST .)
+    NEGATIVE        reduce using rule 21 (question -> IS_UP entity entity QUEST .)
+    $end            reduce using rule 21 (question -> IS_UP entity entity QUEST .)
 
 
 state 60
 
-    (20) question -> IS entity A datatype . QUEST
+    (19) question -> IS_UP entity bool QUEST .
 
-    QUEST           shift and go to state 65
+    WHAT            reduce using rule 19 (question -> IS_UP entity bool QUEST .)
+    IS_UP           reduce using rule 19 (question -> IS_UP entity bool QUEST .)
+    ARE_UP          reduce using rule 19 (question -> IS_UP entity bool QUEST .)
+    ID              reduce using rule 19 (question -> IS_UP entity bool QUEST .)
+    NUMBER          reduce using rule 19 (question -> IS_UP entity bool QUEST .)
+    NEGATIVE        reduce using rule 19 (question -> IS_UP entity bool QUEST .)
+    $end            reduce using rule 19 (question -> IS_UP entity bool QUEST .)
 
 
 state 61
 
-    (22) question -> ARE list entity QUEST .
+    (20) question -> IS_UP entity A datatype . QUEST
 
-    WHAT            reduce using rule 22 (question -> ARE list entity QUEST .)
-    IS              reduce using rule 22 (question -> ARE list entity QUEST .)
-    ARE             reduce using rule 22 (question -> ARE list entity QUEST .)
-    ID              reduce using rule 22 (question -> ARE list entity QUEST .)
-    NUMBER          reduce using rule 22 (question -> ARE list entity QUEST .)
-    NEGATIVE        reduce using rule 22 (question -> ARE list entity QUEST .)
-    $end            reduce using rule 22 (question -> ARE list entity QUEST .)
+    QUEST           shift and go to state 65
 
 
 state 62
 
-    (23) question -> ARE entity A datatype . QUEST
+    (22) question -> ARE_UP list entity QUEST .
+
+    WHAT            reduce using rule 22 (question -> ARE_UP list entity QUEST .)
+    IS_UP           reduce using rule 22 (question -> ARE_UP list entity QUEST .)
+    ARE_UP          reduce using rule 22 (question -> ARE_UP list entity QUEST .)
+    ID              reduce using rule 22 (question -> ARE_UP list entity QUEST .)
+    NUMBER          reduce using rule 22 (question -> ARE_UP list entity QUEST .)
+    NEGATIVE        reduce using rule 22 (question -> ARE_UP list entity QUEST .)
+    $end            reduce using rule 22 (question -> ARE_UP list entity QUEST .)
+
+
+state 63
+
+    (23) question -> ARE_UP entity A datatype . QUEST
 
     QUEST           shift and go to state 66
 
 
-state 63
+state 64
 
     (28) list -> entity COMMA list .
 
@@ -1047,45 +1057,32 @@ state 63
     PERIOD          reduce using rule 28 (list -> entity COMMA list .)
 
 
-state 64
-
-    (18) question -> WHAT IS entity QUEST .
-
-    WHAT            reduce using rule 18 (question -> WHAT IS entity QUEST .)
-    IS              reduce using rule 18 (question -> WHAT IS entity QUEST .)
-    ARE             reduce using rule 18 (question -> WHAT IS entity QUEST .)
-    ID              reduce using rule 18 (question -> WHAT IS entity QUEST .)
-    NUMBER          reduce using rule 18 (question -> WHAT IS entity QUEST .)
-    NEGATIVE        reduce using rule 18 (question -> WHAT IS entity QUEST .)
-    $end            reduce using rule 18 (question -> WHAT IS entity QUEST .)
-
-
 state 65
 
-    (20) question -> IS entity A datatype QUEST .
+    (20) question -> IS_UP entity A datatype QUEST .
 
-    WHAT            reduce using rule 20 (question -> IS entity A datatype QUEST .)
-    IS              reduce using rule 20 (question -> IS entity A datatype QUEST .)
-    ARE             reduce using rule 20 (question -> IS entity A datatype QUEST .)
-    ID              reduce using rule 20 (question -> IS entity A datatype QUEST .)
-    NUMBER          reduce using rule 20 (question -> IS entity A datatype QUEST .)
-    NEGATIVE        reduce using rule 20 (question -> IS entity A datatype QUEST .)
-    $end            reduce using rule 20 (question -> IS entity A datatype QUEST .)
+    WHAT            reduce using rule 20 (question -> IS_UP entity A datatype QUEST .)
+    IS_UP           reduce using rule 20 (question -> IS_UP entity A datatype QUEST .)
+    ARE_UP          reduce using rule 20 (question -> IS_UP entity A datatype QUEST .)
+    ID              reduce using rule 20 (question -> IS_UP entity A datatype QUEST .)
+    NUMBER          reduce using rule 20 (question -> IS_UP entity A datatype QUEST .)
+    NEGATIVE        reduce using rule 20 (question -> IS_UP entity A datatype QUEST .)
+    $end            reduce using rule 20 (question -> IS_UP entity A datatype QUEST .)
 
 
 state 66
 
-    (23) question -> ARE entity A datatype QUEST .
+    (23) question -> ARE_UP entity A datatype QUEST .
 
-    WHAT            reduce using rule 23 (question -> ARE entity A datatype QUEST .)
-    IS              reduce using rule 23 (question -> ARE entity A datatype QUEST .)
-    ARE             reduce using rule 23 (question -> ARE entity A datatype QUEST .)
-    ID              reduce using rule 23 (question -> ARE entity A datatype QUEST .)
-    NUMBER          reduce using rule 23 (question -> ARE entity A datatype QUEST .)
-    NEGATIVE        reduce using rule 23 (question -> ARE entity A datatype QUEST .)
-    $end            reduce using rule 23 (question -> ARE entity A datatype QUEST .)
+    WHAT            reduce using rule 23 (question -> ARE_UP entity A datatype QUEST .)
+    IS_UP           reduce using rule 23 (question -> ARE_UP entity A datatype QUEST .)
+    ARE_UP          reduce using rule 23 (question -> ARE_UP entity A datatype QUEST .)
+    ID              reduce using rule 23 (question -> ARE_UP entity A datatype QUEST .)
+    NUMBER          reduce using rule 23 (question -> ARE_UP entity A datatype QUEST .)
+    NEGATIVE        reduce using rule 23 (question -> ARE_UP entity A datatype QUEST .)
+    $end            reduce using rule 23 (question -> ARE_UP entity A datatype QUEST .)
 
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for QUEST in state 46 resolved as shift
+WARNING: shift/reduce conflict for QUEST in state 47 resolved as shift

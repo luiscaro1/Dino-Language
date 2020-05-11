@@ -3,7 +3,6 @@ import dlex
 import sys
 
 tokens = dlex.tokens
-sen_num = 0
 
 
 def p_program(p):
@@ -27,9 +26,7 @@ def p_program(p):
 def p_sentence(p):
     '''sentence : expression PERIOD
                 | definition PERIOD
-                | question'''
-    global sen_num
-    sen_num += 1
+                | question QUEST'''
     p[0] = (sen_num, p[1])
 
 
@@ -86,29 +83,27 @@ def p_definition(p):
 
 # question
 def p_question(p):
-    '''question : WHAT IS entity QUEST'''
+    '''question : WHAT IS entity '''
     p[0] = p[3]
 
 
 def p_question_is(p):
-    '''question : IS entity bool QUEST
-                | IS entity A datatype QUEST
-                | IS entity entity QUEST'''
-    if p[1] == 'is':
-        if p[3] == 'a':
-            p[0] = (p[2], p[4])
-        else:
-            p[0] = (p[2], p[3])
+    '''question : IS_UP entity bool
+                | IS_UP entity A datatype
+                | IS_UP entity entity '''
+    if p[3] == 'a':
+        p[0] = (p[2], p[4])
+    else:
+        p[0] = (p[2], p[3])
 
 
 def p_question_are(p):
-    '''question : ARE list entity QUEST
-                | ARE entity A datatype QUEST'''
-    if p[1] == 'are':
-        if p[3] == 'a':
-            p[0] = (p[2], p[4])
-        else:
-            p[0] = (p[2], p[3])
+    '''question : ARE_UP list entity
+                | ARE_UP entity A datatype '''
+    if p[3] == 'a':
+        p[0] = (p[2], p[4])
+    else:
+        p[0] = (p[2], p[3])
 
 
 # entity

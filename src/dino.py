@@ -1,6 +1,7 @@
 import sys
 import dparse
 import dlex
+import dinterp
 
 # sys.path.insert(0, "Dino>>")
 #
@@ -16,7 +17,7 @@ fhand = open("test.txt")
 data = fhand.read()
 
 prog = dparse.parse(data)
-print(prog)
+interp = dinterp.DinoInterp(prog).readData()
 
 #
 # while True:

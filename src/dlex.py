@@ -1,10 +1,10 @@
 import ply.lex as lex
 
 reserved = {
-    "is": "IS",
+    "is": "IS", "Is":"IS_UP",
     "a": "A",
     "an": "AN",
-    "are": "ARE",
+    "are": "ARE", "Are":"ARE_UP",
     "plus": "PLUS",
     "minus": "MINUS",
     "times": "TIMES",
@@ -12,23 +12,17 @@ reserved = {
     "by": "BY",
     "true": "TRUE",
     "false": "FALSE",
-    "what": "WHAT"
+    "What": "WHAT"
 }
-tokens = ["PERIOD", "QUEST", "ID", "NUMBER", "COMMA", "NEGATIVE", "COLON", "NEWLINE"] + list(reserved.values())
+tokens = ["PERIOD", "QUEST", "ID", "NUMBER", "COMMA", "NEGATIVE", "COLON"] + list(reserved.values())
 
 t_PERIOD = r"\."
 t_QUEST = r"\?"
 t_NUMBER = r"\d+"
 t_COMMA = r"\,"
-t_ignore = " \t"
+t_ignore = " \t\n"
 t_NEGATIVE = r"\-"
 t_COLON = r"\:"
-
-
-def t_NEWLINE(t):
-    r"""\n"""
-    t.lexer.lineno += 1
-    return t
 
 
 def t_ID(t):
