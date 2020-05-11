@@ -17,7 +17,12 @@ fhand = open("test.txt")
 data = fhand.read()
 
 prog = dparse.parse(data)
-interp = dinterp.DinoInterp(prog).readData()
+interp = dinterp.DinoInterp(prog)
+
+interp.readData()
+print()
+interp.run()
+
 
 #
 # while True:

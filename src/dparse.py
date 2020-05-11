@@ -3,7 +3,7 @@ import dlex
 import sys
 
 tokens = dlex.tokens
-
+sen_num = 0
 
 def p_program(p):
     """program : program sentence
@@ -26,8 +26,12 @@ def p_program(p):
 def p_sentence(p):
     '''sentence : expression PERIOD
                 | definition PERIOD
+                | modification PERIOD
                 | question QUEST'''
-    p[0] = (sen_num, p[1])
+    global sen_num
+    sen_num += 1
+
+    p[0] = (sen_num, (p.slice[1].type , p[1]))
 
 
 # expression
@@ -80,30 +84,38 @@ def p_definition(p):
     else:
         p[0] = (p[1], p[4])
 
+#modification
+def p_modification(p):
+    '''modification : id OF id IS entity
+                    | id OF id IS list'''
+    p[0] = (p[3] , (p[1] , p[5]))
 
 # question
 def p_question(p):
-    '''question : WHAT IS entity '''
-    p[0] = p[3]
-
-
-def p_question_is(p):
-    '''question : IS_UP entity bool
-                | IS_UP entity A datatype
-                | IS_UP entity entity '''
-    if p[3] == 'a':
-        p[0] = (p[2], p[4])
+    '''question : WHAT IS id
+                | WHAT ARE list
+                | WHAT IS THE id OF id
+                | WHAT IS id OF id'''
+    if len(p) == 7:
+        p[0] = (p[6], p[4])
+    elif len(p) == 6:
+        p[0] = (p[5], p[3])
     else:
-        p[0] = (p[2], p[3])
+        p[0] = p[3]
 
 
-def p_question_are(p):
-    '''question : ARE_UP list entity
-                | ARE_UP entity A datatype '''
-    if p[3] == 'a':
-        p[0] = (p[2], p[4])
-    else:
-        p[0] = (p[2], p[3])
+# def p_question_is(p):
+#     '''question : IS_UP entity datatype'''
+#     p[0] = (p[2], p[3])
+
+
+# def p_question_are(p):
+#     '''question : ARE_UP list entity
+#                 | ARE_UP entity A datatype '''
+#     if p[3] == 'a':
+#         p[0] = (p[2], p[4])
+#     else:
+#         p[0] = (p[2], p[3])
 
 
 # entity
@@ -129,8 +141,6 @@ def p_list(p):
         p[0].append(p[1])
     else:
         p[0] = [p[1]]
-    # bool
-
 
 # bool
 def p_bool(p):
