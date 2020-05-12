@@ -7,4 +7,9 @@ Conejos of Luis is pepito, sutano, joshua.
 What is Joshua ?
 Joshua is a Homo.
 What is Joshua ?
-Animals are: bunny, duck, pig.
+X is 3.
+What is X ?
+Animals are: bunny, duck, pig, cat, dog, hamster.
+What is the length of Animals ?
+What is the length of Brandon, Luis, Joshua, Cristian ?
+Y is 3 plus 4 minus 2.

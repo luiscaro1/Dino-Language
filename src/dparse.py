@@ -78,7 +78,9 @@ def p_definition(p):
                   | id IS AN id
                   | id ARE COLON list
                   | id IS COLON list
-                  | id IS datatype'''
+                  | id IS datatype
+                  | id IS expression'''
+
     if len(p) == 4:
         p[0] = (p[1], p[3])
     else:
@@ -95,9 +97,13 @@ def p_question(p):
     '''question : WHAT IS id
                 | WHAT ARE list
                 | WHAT IS THE id OF id
-                | WHAT IS id OF id'''
+                | WHAT IS id OF id
+                | WHAT IS THE LENGTH OF list'''
     if len(p) == 7:
-        p[0] = (p[6], p[4])
+        if p[4] == 'length':
+            p[0] = (p[4] , p[6])
+        else:
+            p[0] = (p[6], p[4])
     elif len(p) == 6:
         p[0] = (p[5], p[3])
     else:

@@ -32,13 +32,13 @@ class DinoInterp:
     def define(self,sentence):
         key, value = sentence
         if isinstance(value,list):
-            self.vars[key] = {'value':value , 'len':len(value)}
+            self.vars[key] = {'type':'list','value':value , 'length':len(value)}
             return self.vars[key]
         elif isinstance(value,int) or isinstance(value,bool):
-            self.vars[key] = value
+            self.vars[key] = {'value':value}
             return self.vars[key]
-        else:
-            self.vars[key] = {'value':value }
+        else: #object construction
+            self.vars[key] = {'type':value }
             return self.vars[key]
 
     def relate(self,sentence):
@@ -52,11 +52,19 @@ class DinoInterp:
 
         if not value:
             if key in self.vars.keys():
-                return self.vars[key]['value']
+                if not 'type' in self.vars[key]:
+                    return self.vars[key]['value']
+                return self.vars[key]['type']
             else:
                 return None
         else:
-            if key in self.vars.keys() and isinstance(self.vars[key],dict) and value in self.vars[key].keys():
+            if key == 'length':
+                if isinstance(value,list):
+                    return len(value)
+                else:
+                    if value in self.vars.keys() and isinstance(self.vars[value],dict) and key in self.vars[value].keys():
+                        return self.vars[value][key]
+            elif key in self.vars.keys() and isinstance(self.vars[key],dict) and value in self.vars[key].keys():
                 return self.vars[key][value]
             else:
                 return None
