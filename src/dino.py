@@ -19,7 +19,7 @@ data = fhand.read()
 prog = dparse.parse(data)
 interp = dinterp.DinoInterp(prog)
 
-interp.readData()
+# interp.readData()
 print()
 interp.run()
 
@@ -36,7 +36,8 @@ interp.run()
 #         continue
 #     line += "\n"
 #     prog = dparse.parse(line)
-#     print(prog)
+#     interp = dinterp.DinoInterp(prog)
+#     interp.run()
 #     if not prog:
 #         continue
 

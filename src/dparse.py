@@ -89,7 +89,8 @@ def p_definition(p):
 #modification
 def p_modification(p):
     '''modification : id OF id IS entity
-                    | id OF id IS list'''
+                    | id OF id IS list
+                    | id OF id ARE list'''
     p[0] = (p[3] , (p[1] , p[5]))
 
 # question

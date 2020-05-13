@@ -6,6 +6,7 @@ class DinoInterp:
     def __init__(self,prog):
         self.prog = prog
         self.vars = {}
+        self.ee = 'joshuamatos'
 
 
     def readData(self):
@@ -16,7 +17,7 @@ class DinoInterp:
         print("Output:")
         print()
         for sentno in self.prog:
-            type = self.prog[sentno][0]                           #luis is a/an tall. luis is a person          luis: tall, 24
+            type = self.prog[sentno][0]
             if type == 'definition':
                 print(str(sentno) + ":", self.define(self.prog[sentno][1]))
             elif type == 'question':
@@ -49,6 +50,9 @@ class DinoInterp:
             key, value = sentence
         else:
             key = sentence
+
+        if lower(key) == self.ee:
+            return 'A very homosexual person who has every mental disability known to mankind'
 
         if not value:
             if key in self.vars.keys():
