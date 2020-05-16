@@ -110,12 +110,10 @@ def p_question(p):
     else:
         p[0] = p[3]
 
-
-# def p_question_is(p):
-#     '''question : IS_UP entity datatype'''
-#     p[0] = (p[2], p[3])
+##Type checking objects##
 
 
+###stays commented, will not implement###
 # def p_question_are(p):
 #     '''question : ARE_UP list entity
 #                 | ARE_UP entity A datatype '''
