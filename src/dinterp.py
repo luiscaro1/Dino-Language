@@ -6,7 +6,6 @@ class DinoInterp:
     def __init__(self,prog):
         self.prog = prog
         self.vars = {}
-        self.ee = 'joshuamatos'
 
 
     def readData(self):
@@ -50,9 +49,6 @@ class DinoInterp:
             key, value = sentence
         else:
             key = sentence
-
-        if lower(key) == self.ee:
-            return 'A very homosexual person who has every mental disability known to mankind'
 
         if not value:
             if key in self.vars.keys():
