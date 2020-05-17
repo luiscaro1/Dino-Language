@@ -111,6 +111,9 @@ def p_question(p):
         p[0] = p[3]
 
 ##Type checking objects##
+def p_question_is(p):
+    '''question : IS_UP id id'''
+    p[0] = (p[2], p[3])
 
 
 ###stays commented, will not implement###
