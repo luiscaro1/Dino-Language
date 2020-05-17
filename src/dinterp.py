@@ -64,9 +64,9 @@ class DinoInterp:
                 else:
                     if value in self.vars.keys() and isinstance(self.vars[value],dict) and key in self.vars[value].keys():
                         return self.vars[value][key]
-
-            #elif object is type return type
-
+                    
+            elif key in self.vars.keys() and value in self.vars[key].keys():
+                return self.vars[key]['type']
             elif key in self.vars.keys() and isinstance(self.vars[key],dict) and value in self.vars[key].keys():
                 return self.vars[key][value]
             else:
