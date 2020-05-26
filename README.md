@@ -1,4 +1,4 @@
-#Dot Dino
+## Dot Dino
 
 *by Luis F Caro, Joshua Matos and Brandon Fung*
 
