@@ -1,4 +1,4 @@
-# Dino-Language
+#Dot Dino
 
 *by Luis F Caro, Joshua Matos and Brandon Fung*
 
