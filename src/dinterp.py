@@ -7,6 +7,10 @@ class DinoInterp:
         self.prog = prog
         self.vars = {}
 
+    def setVariables(self,v):
+        self.vars = v
+    def getVariables(self, v):
+        return self.vars
 
     def readData(self):
         for sentno in self.prog:
@@ -26,8 +30,8 @@ class DinoInterp:
             else: #expression
                 print(str(sentno) + ":", self.prog[sentno][1])
         print()
-        print('variables:')
-        print(self.vars)
+        # print('variables:')
+        # print(self.vars)
 
     def define(self,sentence):
         key, value = sentence
@@ -64,7 +68,7 @@ class DinoInterp:
                 else:
                     if value in self.vars.keys() and isinstance(self.vars[value],dict) and key in self.vars[value].keys():
                         return self.vars[value][key]
-                    
+
             elif key in self.vars.keys() and value in self.vars[key].keys():
                 return self.vars[key]['type']
             elif key in self.vars.keys() and isinstance(self.vars[key],dict) and value in self.vars[key].keys():
