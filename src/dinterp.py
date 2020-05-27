@@ -62,15 +62,19 @@ class DinoInterp:
             else:
                 return None
         else:
-            if key == 'length':
+            if key == 'type':
+                if value[0] in self.vars.keys():
+                    return self.vars[value[0]]['type'] == value[1]
+                else:
+                    return False
+
+            elif key == 'length':
                 if isinstance(value,list):
                     return len(value)
                 else:
                     if value in self.vars.keys() and isinstance(self.vars[value],dict) and key in self.vars[value].keys():
                         return self.vars[value][key]
 
-            # elif key in self.vars.keys() and value in self.vars[key].keys():
-            #     return self.vars[key]['type']
             elif key in self.vars.keys() and isinstance(self.vars[key],dict) and value in self.vars[key].keys():
                 return self.vars[key][value]
             else:

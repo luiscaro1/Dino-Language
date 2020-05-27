@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'A AN ARE BY COLON COMMA DIVIDED FALSE ID IS IS_UP LENGTH MINUS NEGATIVE NUMBER OF PERIOD PLUS QUEST THE TIMES TRUE WHATprogram : program sentence\n               | sentencesentence : expression PERIOD\n                | definition PERIOD\n                | modification PERIOD\n                | question QUESTexpression : termexpression : expression PLUS term\n                  | expression MINUS term\n        term      : term TIMES factor\n                  | term DIVIDED BY factorterm : factorfactor : numberdefinition : id IS A id\n                  | id IS AN id\n                  | id ARE COLON list\n                  | id IS COLON list\n                  | id IS datatype\n                  | id IS expressionmodification : id OF id IS entity\n                    | id OF id IS list\n                    | id OF id ARE listquestion : WHAT IS id\n                | WHAT ARE list\n                | WHAT IS THE id OF id\n                | WHAT ARE THE id OF id\n                | WHAT ARE id OF id\n                | WHAT IS id OF id\n                | WHAT IS THE LENGTH OF listquestion : IS_UP id identity : id\n              | datatypedatatype : number\n                | boollist : entity COMMA list\n            | entitybool : TRUE\n            | FALSEnumber : NUMBER\n              | NEGATIVE NUMBERid : ID'
+_lr_signature = 'A AN ARE BY COLON COMMA DIVIDED FALSE ID IS IS_UP LENGTH MINUS NEGATIVE NUMBER OF PERIOD PLUS QUEST THE TIMES TRUE WHATprogram : program sentence\n               | sentencesentence : expression PERIOD\n                | definition PERIOD\n                | modification PERIOD\n                | question QUESTexpression : termexpression : expression PLUS term\n                  | expression MINUS term\n        term      : term TIMES factor\n                  | term DIVIDED BY factorterm : factorfactor : numberdefinition : id IS A id\n                  | id IS AN id\n                  | id ARE COLON list\n                  | id IS COLON list\n                  | id IS datatype\n                  | id IS expressionmodification : id OF id IS entity\n                    | id OF id IS list\n                    | id OF id ARE listquestion : WHAT IS id\n                | WHAT ARE list\n                | WHAT IS THE id OF id\n                | WHAT ARE THE id OF id\n                | WHAT ARE id OF id\n                | WHAT IS id OF id\n                | WHAT IS THE LENGTH OF listquestion : IS_UP id A id\n                | IS_UP id AN id\n                | IS_UP id identity : id\n              | datatypedatatype : number\n                | boollist : entity COMMA list\n            | entitybool : TRUE\n            | FALSEnumber : NUMBER\n              | NEGATIVE NUMBERid : ID'
     
-_lr_action_items = {'WHAT':([0,1,2,16,17,20,21,22,],[9,9,-2,-1,-3,-4,-5,-6,]),'IS_UP':([0,1,2,16,17,20,21,22,],[10,10,-2,-1,-3,-4,-5,-6,]),'ID':([0,1,2,10,12,16,17,20,21,22,27,28,29,30,36,37,38,45,48,50,62,63,64,68,69,74,75,76,],[12,12,-2,12,-41,-1,-3,-4,-5,-6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,]),'NUMBER':([0,1,2,15,16,17,18,19,20,21,22,23,25,29,35,38,45,62,63,69,75,],[14,14,-2,31,-1,-3,14,14,-4,-5,-6,14,14,14,14,14,14,14,14,14,14,]),'NEGATIVE':([0,1,2,16,17,18,19,20,21,22,23,25,29,35,38,45,62,63,69,75,],[15,15,-2,-1,-3,15,15,-4,-5,-6,15,15,15,15,15,15,15,15,15,15,]),'$end':([1,2,16,17,20,21,22,],[0,-2,-1,-3,-4,-5,-6,]),'PERIOD':([3,4,5,7,11,12,13,14,31,32,33,34,39,40,41,42,43,44,52,53,54,56,57,58,59,60,61,70,71,72,78,],[17,20,21,-7,-12,-41,-13,-39,-40,-8,-9,-10,-18,-19,-13,-34,-37,-38,-36,-32,-33,-11,-14,-15,-31,-17,-16,-20,-21,-22,-35,]),'PLUS':([3,7,11,13,14,31,32,33,34,40,41,56,],[18,-7,-12,-13,-39,-40,-8,-9,-10,18,-13,-11,]),'MINUS':([3,7,11,13,14,31,32,33,34,40,41,56,],[19,-7,-12,-13,-39,-40,-8,-9,-10,19,-13,-11,]),'QUEST':([6,12,14,31,42,43,44,47,49,51,52,53,54,55,59,73,77,78,79,80,81,],[22,-41,-39,-40,-34,-37,-38,-23,-24,-31,-36,-32,-33,-30,-31,-28,-27,-35,-25,-29,-26,]),'TIMES':([7,11,13,14,31,32,33,34,41,56,],[23,-12,-13,-39,-40,23,23,-10,-13,-11,]),'DIVIDED':([7,11,13,14,31,32,33,34,41,56,],[24,-12,-13,-39,-40,24,24,-10,-13,-11,]),'IS':([8,9,12,46,],[25,28,-41,62,]),'ARE':([8,9,12,46,],[26,29,-41,63,]),'OF':([8,12,47,51,65,66,67,],[27,-41,64,68,74,75,76,]),'COMMA':([12,14,31,42,43,44,51,52,53,54,59,70,],[-41,-39,-40,-34,-37,-38,-31,69,-32,-33,-31,69,]),'BY':([24,],[35,]),'A':([25,],[36,]),'AN':([25,],[37,]),'COLON':([25,26,],[38,45,]),'TRUE':([25,29,38,45,62,63,69,75,],[43,43,43,43,43,43,43,43,]),'FALSE':([25,29,38,45,62,63,69,75,],[44,44,44,44,44,44,44,44,]),'THE':([28,29,],[48,50,]),'LENGTH':([48,],[66,]),}
+_lr_action_items = {'WHAT':([0,1,2,16,17,20,21,22,],[9,9,-2,-1,-3,-4,-5,-6,]),'IS_UP':([0,1,2,16,17,20,21,22,],[10,10,-2,-1,-3,-4,-5,-6,]),'ID':([0,1,2,10,12,16,17,20,21,22,27,28,29,30,36,37,38,45,48,50,56,57,64,65,66,70,71,78,79,80,],[12,12,-2,12,-43,-1,-3,-4,-5,-6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,]),'NUMBER':([0,1,2,15,16,17,18,19,20,21,22,23,25,29,35,38,45,64,65,71,79,],[14,14,-2,31,-1,-3,14,14,-4,-5,-6,14,14,14,14,14,14,14,14,14,14,]),'NEGATIVE':([0,1,2,16,17,18,19,20,21,22,23,25,29,35,38,45,64,65,71,79,],[15,15,-2,-1,-3,15,15,-4,-5,-6,15,15,15,15,15,15,15,15,15,15,]),'$end':([1,2,16,17,20,21,22,],[0,-2,-1,-3,-4,-5,-6,]),'PERIOD':([3,4,5,7,11,12,13,14,31,32,33,34,39,40,41,42,43,44,52,53,54,58,59,60,61,62,63,74,75,76,82,],[17,20,21,-7,-12,-43,-13,-41,-42,-8,-9,-10,-18,-19,-13,-36,-39,-40,-38,-34,-35,-11,-14,-15,-33,-17,-16,-20,-21,-22,-37,]),'PLUS':([3,7,11,13,14,31,32,33,34,40,41,58,],[18,-7,-12,-13,-41,-42,-8,-9,-10,18,-13,-11,]),'MINUS':([3,7,11,13,14,31,32,33,34,40,41,58,],[19,-7,-12,-13,-41,-42,-8,-9,-10,19,-13,-11,]),'QUEST':([6,12,14,31,42,43,44,47,49,51,52,53,54,55,61,72,73,77,81,82,83,84,85,],[22,-43,-41,-42,-36,-39,-40,-23,-24,-33,-38,-34,-35,-32,-33,-30,-31,-28,-27,-37,-25,-29,-26,]),'TIMES':([7,11,13,14,31,32,33,34,41,58,],[23,-12,-13,-41,-42,23,23,-10,-13,-11,]),'DIVIDED':([7,11,13,14,31,32,33,34,41,58,],[24,-12,-13,-41,-42,24,24,-10,-13,-11,]),'IS':([8,9,12,46,],[25,28,-43,64,]),'ARE':([8,9,12,46,],[26,29,-43,65,]),'OF':([8,12,47,51,67,68,69,],[27,-43,66,70,78,79,80,]),'A':([12,25,30,],[-43,36,56,]),'AN':([12,25,30,],[-43,37,57,]),'COMMA':([12,14,31,42,43,44,51,52,53,54,61,74,],[-43,-41,-42,-36,-39,-40,-33,71,-34,-35,-33,71,]),'BY':([24,],[35,]),'COLON':([25,26,],[38,45,]),'TRUE':([25,29,38,45,64,65,71,79,],[43,43,43,43,43,43,43,43,]),'FALSE':([25,29,38,45,64,65,71,79,],[44,44,44,44,44,44,44,44,]),'THE':([28,29,],[48,50,]),'LENGTH':([48,],[68,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'program':([0,],[1,]),'sentence':([0,1,],[2,16,]),'expression':([0,1,25,],[3,3,40,]),'definition':([0,1,],[4,4,]),'modification':([0,1,],[5,5,]),'question':([0,1,],[6,6,]),'term':([0,1,18,19,25,],[7,7,32,33,7,]),'id':([0,1,10,27,28,29,30,36,37,38,45,48,50,62,63,64,68,69,74,75,76,],[8,8,30,46,47,51,55,57,58,59,59,65,67,59,59,73,77,59,79,59,81,]),'factor':([0,1,18,19,23,25,35,],[11,11,11,11,34,11,56,]),'number':([0,1,18,19,23,25,29,35,38,45,62,63,69,75,],[13,13,13,13,13,41,54,13,54,54,54,54,54,54,]),'datatype':([25,29,38,45,62,63,69,75,],[39,53,53,53,53,53,53,53,]),'bool':([25,29,38,45,62,63,69,75,],[42,42,42,42,42,42,42,42,]),'list':([29,38,45,62,63,69,75,],[49,60,61,71,72,78,80,]),'entity':([29,38,45,62,63,69,75,],[52,52,52,70,52,52,52,]),}
+_lr_goto_items = {'program':([0,],[1,]),'sentence':([0,1,],[2,16,]),'expression':([0,1,25,],[3,3,40,]),'definition':([0,1,],[4,4,]),'modification':([0,1,],[5,5,]),'question':([0,1,],[6,6,]),'term':([0,1,18,19,25,],[7,7,32,33,7,]),'id':([0,1,10,27,28,29,30,36,37,38,45,48,50,56,57,64,65,66,70,71,78,79,80,],[8,8,30,46,47,51,55,59,60,61,61,67,69,72,73,61,61,77,81,61,83,61,85,]),'factor':([0,1,18,19,23,25,35,],[11,11,11,11,34,11,58,]),'number':([0,1,18,19,23,25,29,35,38,45,64,65,71,79,],[13,13,13,13,13,41,54,13,54,54,54,54,54,54,]),'datatype':([25,29,38,45,64,65,71,79,],[39,53,53,53,53,53,53,53,]),'bool':([25,29,38,45,64,65,71,79,],[42,42,42,42,42,42,42,42,]),'list':([29,38,45,64,65,71,79,],[49,62,63,75,76,82,84,]),'entity':([29,38,45,64,65,71,79,],[52,52,52,74,52,52,52,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -56,16 +56,18 @@ _lr_productions = [
   ('question -> WHAT ARE id OF id','question',5,'p_question','dparse.py',102),
   ('question -> WHAT IS id OF id','question',5,'p_question','dparse.py',103),
   ('question -> WHAT IS THE LENGTH OF list','question',6,'p_question','dparse.py',104),
-  ('question -> IS_UP id id','question',3,'p_question_is','dparse.py',117),
-  ('entity -> id','entity',1,'p_entity','dparse.py',133),
-  ('entity -> datatype','entity',1,'p_entity','dparse.py',134),
-  ('datatype -> number','datatype',1,'p_datatype','dparse.py',140),
-  ('datatype -> bool','datatype',1,'p_datatype','dparse.py',141),
-  ('list -> entity COMMA list','list',3,'p_list','dparse.py',147),
-  ('list -> entity','list',1,'p_list','dparse.py',148),
-  ('bool -> TRUE','bool',1,'p_bool','dparse.py',157),
-  ('bool -> FALSE','bool',1,'p_bool','dparse.py',158),
-  ('number -> NUMBER','number',1,'p_number','dparse.py',167),
-  ('number -> NEGATIVE NUMBER','number',2,'p_number','dparse.py',168),
-  ('id -> ID','id',1,'p_id','dparse.py',177),
+  ('question -> IS_UP id A id','question',4,'p_question_is','dparse.py',117),
+  ('question -> IS_UP id AN id','question',4,'p_question_is','dparse.py',118),
+  ('question -> IS_UP id id','question',3,'p_question_is','dparse.py',119),
+  ('entity -> id','entity',1,'p_entity','dparse.py',138),
+  ('entity -> datatype','entity',1,'p_entity','dparse.py',139),
+  ('datatype -> number','datatype',1,'p_datatype','dparse.py',145),
+  ('datatype -> bool','datatype',1,'p_datatype','dparse.py',146),
+  ('list -> entity COMMA list','list',3,'p_list','dparse.py',152),
+  ('list -> entity','list',1,'p_list','dparse.py',153),
+  ('bool -> TRUE','bool',1,'p_bool','dparse.py',162),
+  ('bool -> FALSE','bool',1,'p_bool','dparse.py',163),
+  ('number -> NUMBER','number',1,'p_number','dparse.py',172),
+  ('number -> NEGATIVE NUMBER','number',2,'p_number','dparse.py',173),
+  ('id -> ID','id',1,'p_id','dparse.py',182),
 ]

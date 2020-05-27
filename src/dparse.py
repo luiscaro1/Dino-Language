@@ -114,8 +114,13 @@ def p_question(p):
 
 ##Type checking objects##
 def p_question_is(p):
-    '''question : IS_UP id id'''
-    p[0] = (p[2], p[3])
+    '''question : IS_UP id A id
+                | IS_UP id AN id
+                | IS_UP id id'''
+    if len(p) == 5:
+        p[0] = ('type' ,(p[2], p[4]))
+    else:
+        p[0] = ('type' ,(p[2], p[3]))
 
 
 ###stays commented, will not implement###

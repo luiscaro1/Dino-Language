@@ -2,3 +2,6 @@ Luis is a person.
 Friends of Luis are Joshua, Brandon.
 What is Luis?
 What are the Friends of Luis?
+
+
+Is Luis a woman?
