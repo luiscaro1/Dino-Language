@@ -40,4 +40,5 @@ Objects in Dino can be thought of as a dictionary with its default parameter def
 
 
 ## **Video Presentation & Resources**
-https://youtu.be/NBl5SzGxXWQ
+walkthroguh: https://youtu.be/NBl5SzGxXWQ
+Commercial: https://youtu.be/hdB-0hgyR7E
