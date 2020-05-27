@@ -98,6 +98,8 @@ def p_question(p):
     '''question : WHAT IS id
                 | WHAT ARE list
                 | WHAT IS THE id OF id
+                | WHAT ARE THE id OF id
+                | WHAT ARE id OF id
                 | WHAT IS id OF id
                 | WHAT IS THE LENGTH OF list'''
     if len(p) == 7:

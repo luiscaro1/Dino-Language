@@ -1,15 +1,4 @@
 Luis is a person.
-3 plus 5.
-People are: Luis, Joshua, Brandon.
+Friends of Luis are Joshua, Brandon.
 What is Luis?
-Conejos of Luis is pepito, sutano, joshua.
-10 minus 4 divided by 2.
-What is Joshua ?
-Joshua is a Guy.
-What is Joshua ?
-X is 3.
-What is X ?
-Animals are: bunny, duck, pig, cat, dog, hamster.
-What is the length of Animals ?
-What is the length of Brandon, Luis, Joshua, Cristian ?
-Y is 3 plus 4 minus 2.
+What are the Friends of Luis?
