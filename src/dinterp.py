@@ -30,8 +30,8 @@ class DinoInterp:
             else: #expression
                 print(str(sentno) + ":", self.prog[sentno][1])
         print()
-        # print('variables:')
-        # print(self.vars)
+        print('variables:')
+        print(self.vars)
 
     def define(self,sentence):
         key, value = sentence

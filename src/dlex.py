@@ -14,7 +14,7 @@ reserved = {
     "false": "FALSE",
     "What": "WHAT",
     "of" : "OF",
-    "the": "THE",
+    "the": "THE", "The": "THE_UP",
     "length":"LENGTH"
 }
 tokens = ["PERIOD", "QUEST", "ID", "NUMBER", "COMMA", "NEGATIVE", "COLON"] + list(reserved.values())

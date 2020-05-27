@@ -88,10 +88,10 @@ def p_definition(p):
 
 #modification
 def p_modification(p):
-    '''modification : id OF id IS entity
-                    | id OF id IS list
-                    | id OF id ARE list'''
-    p[0] = (p[3] , (p[1] , p[5]))
+    '''modification : THE_UP id OF id IS entity
+                    | THE_UP id OF id IS list
+                    | THE_UP id OF id ARE list'''
+    p[0] = (p[4] , (p[2] , p[6]))
 
 # question
 def p_question(p):
