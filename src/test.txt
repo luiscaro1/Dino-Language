@@ -7,3 +7,7 @@ What are the Friends of Luis?
 Is Luis a person?
 
 The height of Luis is 176.
+Animals are: bunny, duck, pig, cat, dog, hamster.
+
+What is the length of: 1, 2, 3, 4?
+What is the length of Animals?

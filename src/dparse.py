@@ -100,17 +100,22 @@ def p_question(p):
                 | WHAT IS THE id OF id
                 | WHAT ARE THE id OF id
                 | WHAT ARE id OF id
-                | WHAT IS id OF id
-                | WHAT IS THE LENGTH OF list'''
+                | WHAT IS id OF id'''
+
     if len(p) == 7:
-        if p[4] == 'length':
-            p[0] = (p[4] , p[6])
-        else:
-            p[0] = (p[6], p[4])
+        p[0] = (p[6], p[4])
     elif len(p) == 6:
         p[0] = (p[5], p[3])
     else:
         p[0] = p[3]
+
+def p_question_length(p):
+    '''question :  WHAT IS THE LENGTH OF COLON list
+                | WHAT IS THE LENGTH OF id'''
+    if p[6] == ':':
+        p[0] = (p[4] , p[7])
+    else:
+        p[0] = (p[4] , p[6])
 
 ##Type checking objects##
 def p_question_is(p):

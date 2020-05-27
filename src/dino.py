@@ -22,29 +22,6 @@ interp = dinterp.DinoInterp(prog)
 print()
 interp.run()
 
-# ###Interactive Mode###         ### in development
-# interp = None
-# vars = {}
-# while True:
-#     try:
-#         line = input("[Dino] ")
-#         if line == "<end>":
-#             break
-#     except EOFError:
-#         raise SystemExit
-#     if not line:
-#         continue
-#     line += "\n"
-#     prog = dparse.parse(line)
-#     if interp != None:
-#         interp.setVariables(vars)
-#     interp = dinterp.DinoInterp(prog)
-#     vars = interp.getVariables
-#     interp.run()
-#
-#     if not prog:
-#         continue
-# #########################
 
 # keys = list(prog)
 # if keys[0] > 0:

@@ -3,9 +3,15 @@
 class DinoInterp:
 
 
-    def __init__(self,prog):
-        self.prog = prog
+    def __init__(self, prog=None):
         self.vars = {}
+        if prog is not None:
+            self.prog = prog
+        else:
+            self.prog = None
+
+    def comp(self,prog):
+        self.prog = prog
 
     def setVariables(self,v):
         self.vars = v
@@ -30,8 +36,8 @@ class DinoInterp:
             else: #expression
                 print(str(sentno) + ":", self.prog[sentno][1])
         print()
-        print('variables:')
-        print(self.vars)
+        # print('variables:')
+        # print(self.vars)
 
     def define(self,sentence):
         key, value = sentence
@@ -73,7 +79,7 @@ class DinoInterp:
                     return len(value)
                 else:
                     if value in self.vars.keys() and isinstance(self.vars[value],dict) and key in self.vars[value].keys():
-                        return self.vars[value][key]
+                        return self.vars[value]['length']
 
             elif key in self.vars.keys() and isinstance(self.vars[key],dict) and value in self.vars[key].keys():
                 return self.vars[key][value]
