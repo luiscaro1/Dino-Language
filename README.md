@@ -31,8 +31,10 @@ Objects in Dino can be thought of as a list with the first element pointing to i
 	Some Object => [ ‘type’:Name , ‘attr1’:value1 , ‘attr2’:value2, … ]
 
 * **Familiar grammar**
-Dino language can be very familiar if you know english since its sentences are made up by using 90% english words. By forming english sentences, Dino can be a good experience for kids who want to learn coding.
-**Example:** 
-	> [Dino] Math is 14 plus 12 divided by 2. What is Math?
-	> >> 20
-(note: order of operations will follow PEMDAS automatically, no parenthesis needed)
+	Dino language can be very familiar if you know english since its sentences are made up by using 90% english words. By forming english sentences, Dino can be a good experience for kids who want to learn coding.
+	**Example:** 
+	[Dino] Math is 14 plsu 12 divided by 2. What is Math?
+	Output:
+	20
+
+	(note: order of operations will follow PEMDAS automatically, no parenthesis needed)
