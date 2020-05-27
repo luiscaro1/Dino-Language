@@ -38,7 +38,8 @@ Objects in Dino can be thought of as a dictionary with its default parameter def
 >>20
 
 
-* **Video Presentation & Resources**
+
+## **Video Presentation & Resources**
 https://youtu.be/NBl5SzGxXWQ
 
 (note: order of operations will follow PEMDAS automatically, no parenthesis needed)
