@@ -36,10 +36,8 @@ Objects in Dino can be thought of as a dictionary with its default parameter def
 > [Dino] Math is 14 plus 12 divided by 2. What is Math?
 >>Output:
 >>20
-
+(note: order of operations will follow PEMDAS automatically, no parenthesis needed)
 
 
 ## **Video Presentation & Resources**
 https://youtu.be/NBl5SzGxXWQ
-
-(note: order of operations will follow PEMDAS automatically, no parenthesis needed)
