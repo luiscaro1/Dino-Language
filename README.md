@@ -8,7 +8,7 @@ Dino is a simple and light-weight programming language focused on the English sy
 
 ## **Get Started**
 
-Dino, in its simplicity, is based on English sentences that form a paragraph. Based on what type of sentences are formed, the program collects the data from the paragraph and stored in an internal object-oriented data structure. There are different types of sentences and these are expressions, definitions, questions and modifications.
+Dino, in its simplicity, is based on English sentences. Based on the type of sentences, the program collects the data from the paragraph and stores it in an internal object-oriented data structure. There are four different types of sentences: expressions, definitions, questions and modifications.
 
 ### **Sentence**
   * **Expressions**
@@ -25,16 +25,20 @@ Dino, in its simplicity, is based on English sentences that form a paragraph. Ba
         I.e. The height of Luis is 176.  or  The model of Car is Fiesta.
 
 ### **Objects**
-Objects in Dino can be thought of as a list with the first element pointing to its type. These objects store attributes with their respected values and can be accessed anytime using questions or modifications.
+Objects in Dino can be thought of as a dictionary with its default parameter defining its' type. These objects store attributes with their respected values and can be accessed anytime using questions or modifications.
 
 **Object visualization:**
 	Some Object => [ ‘type’:Name , ‘attr1’:value1 , ‘attr2’:value2, … ]
 
 * **Familiar grammar**
-	Dino language can be very familiar if you know english since its sentences are made up by using 90% english words. By forming english sentences, Dino can be a good experience for kids who want to learn coding.
+	Dino's syntax can be  easy to pick since 90% of its words are made up of Enlgish words. If you don't know English it's okay! By learning dino you'll pick up on basic vocabulary it's a win-win!
 	* __Example:__ 
 > [Dino] Math is 14 plus 12 divided by 2. What is Math?
 >>Output:
 >>20
+
+
+* **Video Presentation & Resources**
+https://youtu.be/NBl5SzGxXWQ
 
 (note: order of operations will follow PEMDAS automatically, no parenthesis needed)
